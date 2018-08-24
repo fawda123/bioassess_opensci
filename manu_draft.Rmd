@@ -4,7 +4,7 @@ output:
   bookdown::word_document2:
     reference_docx: my_styles.docx
 bibliography: refs.bib
-author: 'Marcus W. Beck (marcusb@sccwrp.org), Raphael D. Mazor (raphaelm@sccwrp.org)'
+author: 'Marcus W. Beck (marcusb@sccwrp.org), Raphael D. Mazor (raphaelm@sccwrp.org), Susanna T. Theroux (susannat@sccwrp.org)'
 urlcolor: blue
 link-citations: true
 ---
@@ -62,16 +62,27 @@ Bioassessment is an essential element of environmental monitoring programs that 
 # Principles of open science and what they mean for bioassessment
 
 * Overview of the open science process – follow Hampton paradigm, distinguish between benefits for the researcher vs research institution vs stakeholder/managers
+* Why is open science particularly relevant for bioassessment?  
+     * data are publicly funded, typically, so legal/moral mandates necessitate open analysis, see Molloy 2011 for UK example
+     * Multiple methods have been developed, an important component of open science is data discovery.  Making methods open and transparent can facilitate synthesis and meta-analysis
+     * Data used for bioassessment methods are typically not the "long-tail" of the ecological sciences, i.e., the carefully collected observational data meant to address specific research questions.  Scientists in the long-tail are potentially more relucant to adopt open-science because of the perception of less benefit to making the data open.  This suggests that bioassessment datasets and associated methods are inherently more likely to benefit from openness because more widespread appeal.  Conversely, the long-tail datasets individually may not have broad relevance but collectively could serve larger purposes (Jenny's project?)
 * Aspects of the process that can benefit bioassessment
      * Data provenance and open data
      * Method development – existing software packages to facilitate
-     * Method delivery – portable packages and data visualization, emphasis on interactive online tools
+     * Method delivery – 
+          * portable packages and data visualization, emphasis on interactive online tools: Zastrow 2015 describes power of interactive mapping, Kelling et al. 2009 describe data-intensive approaches for biodiveristy to identify patterns born from the data and data viz is one approach, Fox and Hendler 2011 emphasize viz as part of analysis process not as end-product 
+          * Communication within collaborative teadm and management community, Kelling et al. 2009
 * Why is open science particularly important for bioassessment? Vs. general ecological research? Vs. other kinds of environmental monitoring? Vs. other publicly funded data collection?
 
 # California examples
 
 * Example approach
-     * What is the legal/policy framework for supporting/impeding open science in CA? Are we living up to our aspirations?  
+     * What is the legal/policy framework for supporting/impeding open science in CA? Are we living up to our aspirations?
+          * On July 10, 2018 the The State Water Resources Control Board "adopted a resolution on
+open data principles committing it and the Regional Water Boards to providing broader access
+to the data used to make local, regional and statewide water management and regulatory
+decisions in California." [press release](https://www.waterboards.ca.gov/press_room/press_releases/2018/pr_water_data_071018.pdf), [resolution](https://www.waterboards.ca.gov/board_info/agendas/2018/jul/071018_5_drft_reso.pdf)
+     * AB 1755, Dodd. The Open and Transparent Water Data Act. Passed in 2016, requires state water quality institutions to "create, operate, and maintain a statewide integrated water data platform that, among other things, would integrate existing water and ecological data information from multiple databases and provide data on completed water transfers and exchanges" and "develop protocols for data sharing, documentation, quality control, public access, and promotion of open-source platforms and decision support tools related to water data" 
      * The California vision – describe legal/policy demands for bioassessment, current methods developed, developing tools to link technical products with management 
      * Existing applications – assessment methods packaged as standalone applications complete with documentation, vignettes, versioning
      * Bioassessment as proactive vs reactive – SCAPE for regulatory applications, SCAPE for conservation, other examples
@@ -79,15 +90,16 @@ Bioassessment is an essential element of environmental monitoring programs that 
 # Challenges for bioassessment applications
 
 * Challenges for application
-     * Technical hurdles – technical and constantly expanding skillset is required, immediate returns difficult to see
-     * Sociocultural hurdles – unwillingness to share hard-earned data (less so for bioassesssment than traditional ecology, but could be an issue), vulnerability to criticism
+     * Technical hurdles – technical and constantly expanding skillset is required, immediate returns difficult to see (e.g., for data sharing Hampton et al. 2015, need to find citation for learnign tech skills)
+     * Sociocultural hurdles – unwillingness to share hard-earned data (less so for bioassesssment than traditional ecology, but could be an issue), vulnerability to criticism (Lewandowsky and Bishop 2016 describe concerns of transparency leading to damage of scientific integrity)
      * Institutional barriers – entrenched modes of operation can discourage novelty and exploration, no incentive for adoption
 * The way forward
      * The holy grail is widespread adoption of open science in bioassessment, but this will never be completely integrated, see challenges above
-     * Teaching as an approach – let the trainee become the trainer
+     * Teaching as an approach – let the trainee become the trainer, Hampton et al. 2017 describes training initiatives to close the skill-transfer gap, Touchon and McCoy 2016 describe mismatch between grad programs and tech skills used in contemporary ecological analysis
      * Who is likely to adopt?  Cultivate adopters (researcher benefits, institution benefits, stakeholder benefits), work with non-adopters (institution benefits, stakeholder benefits)
      * Roles for adopters, roles for non-adopters
-     * Development as an approach – roles for adopters
+     * Development as an approach – roles for adopters, develop specialized software packages (require vetting, Borregard et al. 2016, could link in to new but existing pathways for review such as ROpenSci or peer review journals like the R Journal), Touchon and McCoy 2016 advocate for a role of adopters as specialists to facilitate collaboration with "less quantitatively trained or interested students" rather than the latter analysizing their data in potentially suboptimal ways.
+     * Call to implement now - field is transitioning to molecular approaches where information acquisition will be orders of magnitude greater than traditional taxonomic-based approaches. Data acquisition and management will require systematic methods for documenting, cataloging, and sharing information - start now.  Use of online eDNA archives have been established.  
      
 # References
 
