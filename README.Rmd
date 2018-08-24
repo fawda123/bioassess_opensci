@@ -1,1 +1,11 @@
+---
+output:
+  html_document:
+    keep_md: yes
+    toc: no
+    self_contained: no
+---
+
 # README
+
+Materials for bioassessment and open science manuscript

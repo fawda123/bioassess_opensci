@@ -1,0 +1,94 @@
+---
+title: "A case for applying open science principles to bioassessment"
+output: 
+  bookdown::word_document2:
+    reference_docx: my_styles.docx
+bibliography: refs.bib
+author: 'Marcus W. Beck (marcusb@sccwrp.org), Raphael D. Mazor (raphaelm@sccwrp.org)'
+urlcolor: blue
+link-citations: true
+---
+
+```{r setup, echo = F, warning = F, message = F, results = 'hide'}
+# figure path, chunk options
+knitr::opts_chunk$set(fig.path = 'figs/', warning = F, message = F, echo = F, cache = T, dev.args = list(family = 'serif'), dpi = 300, warning = F, out.width = '100%', cache.path = 'manu_draft_cache/',
+  fig.process = function(x) {
+  x2 = sub('-\\d+([.][a-z]+)$', '\\1', x)
+  if (file.rename(x, x2)) x2 else x
+  })
+
+# libraries
+library(Jabbrev)
+
+# extract bib entries from online
+# bib_scrp('manu_draft.Rmd', 'refs.bib')
+
+```
+
+```{r echo = F, cache = F}
+raw <- system('git log -1', intern = TRUE)
+raw <- raw[grep('^Date', raw)]
+raw <- paste('Version', raw)
+```
+`r raw`
+
+# Abstract 
+
+Progress in the field of applied bioassessment is impeded by a lack of methods that are accessible and reproducible for the management community. Open science principles that seek to democratize science can address these challenges, yet widespread adoption in research has yet to gain traction for the devepment and appplication bioassessment methods.  At the core of this philosophy is the concept that research should be reproducible and transparent, in addition to having long-term provenance through effective modes of data preservation and sharing.  This review will introduce core open science concepts that have been advocated more generally in the ecological sciences and will emphasize how adoption can benefit bioassessment for both prescriptive condition assessments and proactive applications that inform planning activities.  Examples from the state of California will be used to demonstrate effective adoption of open science principles through data stewardship, reproducible research, and engagement of stakeholders with multimedia applications.  Technical, sociocultural, and institutional challenges for adopting open science will also be discussed, including practical approaches for overcoming these hurdles in bioassessment applications.
+
+# Introduction
+
+Bioassessment is an essential element of environmental monitoring programs that informs decisions for managing aquatic resources.  Decades of research have supported the development of methods that use a variety of assemblages with regional applications in streams, rivers, lakes, and marine environments.  This body of applied tools represents significant achievements in overcoming technical challenges for developing accurate and interpretable bioassessment methods.  However, the widespread use of bioassessment data by managers and stakeholders is severely imbalanced relative to the number of indices that have been developed .  Existing methods often lack transparency , require specialized training to implement, and are not discoverable beyond specific research applications. Decision-makers require additional tools that synthesize information and bridge the gap  between method and application. 
+
+* The status quo in bioassessment
+     * Science and practice of using resident aquatic organisms to evaluate waterbody health
+     * Bioassessment applications are usually mandated by legislation and informs management of resources through condition assessment
+     * Multiple methods for assessment – reference-condition approach, multimetric indices, predictive multivariate indices, different waterbody types
+     * Consider survey design and methods for index evaluation – accuracy, precision, responsiveness,  sensitivity 
+* What is the problem 
+     * Overall, management of water quality requires science that has been publicly funded and the application of the science is a public service that should be inherently open - but it typically is not. 
+     * Proliferation of methods with lack of transparency - review of index coverage in US, internationally
+     * Report/manuscript as final product paradigm and issues related to transparency,  reproducibility, data provenance
+     * Application requires specialized knowledge of an index, responsibility usually falls on one or two individuals
+     * Lack of access to index calibration/validation data, information that is often collected through public funds although often treated as proprietary
+     * Linking a method to management requires synthesis of information and intuitive tools for applying/interpreting results
+* What is open science
+     * A philosophy and set of tools that can democratize scientific analysis by making data and analyses more accessible
+     * Emphasis on reproducibility, transparency, communication, and longevity, researchers as data stewards not owners
+     * Embraces all aspects of a project from idea conception to delivery of final products, implications for bioassessment
+     * Overall, encourages collaboration and access to/sharing of data
+* Objectives of this paper: Promote use of open science as a philosophy and set of tools for bioassessment applications by describing benefits that facilitate collaboration and stakeholder engagement, focus is on both the why and how to effectively advocate for and empower others to adopt open science
+
+# Principles of open science and what they mean for bioassessment
+
+* Overview of the open science process – follow Hampton paradigm, distinguish between benefits for the researcher vs research institution vs stakeholder/managers
+* Aspects of the process that can benefit bioassessment
+     * Data provenance and open data
+     * Method development – existing software packages to facilitate
+     * Method delivery – portable packages and data visualization, emphasis on interactive online tools
+* Why is open science particularly important for bioassessment? Vs. general ecological research? Vs. other kinds of environmental monitoring? Vs. other publicly funded data collection?
+
+# California examples
+
+* Example approach
+     * What is the legal/policy framework for supporting/impeding open science in CA? Are we living up to our aspirations?  
+     * The California vision – describe legal/policy demands for bioassessment, current methods developed, developing tools to link technical products with management 
+     * Existing applications – assessment methods packaged as standalone applications complete with documentation, vignettes, versioning
+     * Bioassessment as proactive vs reactive – SCAPE for regulatory applications, SCAPE for conservation, other examples
+     
+# Challenges for bioassessment applications
+
+* Challenges for application
+     * Technical hurdles – technical and constantly expanding skillset is required, immediate returns difficult to see
+     * Sociocultural hurdles – unwillingness to share hard-earned data (less so for bioassesssment than traditional ecology, but could be an issue), vulnerability to criticism
+     * Institutional barriers – entrenched modes of operation can discourage novelty and exploration, no incentive for adoption
+* The way forward
+     * The holy grail is widespread adoption of open science in bioassessment, but this will never be completely integrated, see challenges above
+     * Teaching as an approach – let the trainee become the trainer
+     * Who is likely to adopt?  Cultivate adopters (researcher benefits, institution benefits, stakeholder benefits), work with non-adopters (institution benefits, stakeholder benefits)
+     * Roles for adopters, roles for non-adopters
+     * Development as an approach – roles for adopters
+     
+# References
+
+
