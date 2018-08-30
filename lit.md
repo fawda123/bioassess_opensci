@@ -9,7 +9,7 @@ Collins 2016. Vegetation science in the age of big data. [link](https://doi.org/
 Mills et al. 2015. Archiving primary data: solutions for long‐term studies. [link](https://doi.org/10.1016/j.tree.2015.07.006)
 * Resistence to sharing open data, traditional ecological sciences
 
-Lowndes et al. 2017 Our path to better scinece in less time using open data science tools. [link](https://www.nature.com/articles/s41559-017-0160)
+Lowndes et al. 2017 Our path to better science in less time using open data science tools. [link](https://www.nature.com/articles/s41559-017-0160)
 * Open science practices with NCEAS ocean health index
 
 Ihle et al. 2017 Striving for transparent and credible research: practical guidelines for behavioral ecologists [link](https://doi.org/10.1093/beheco/arx003)
