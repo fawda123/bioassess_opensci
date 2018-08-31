@@ -64,3 +64,8 @@ Baird and Hajibabaei 2012 Biomonitoring 2.0: A new paradigm in ecosystem assessm
 
 Hering et al. 2010 The European Water FrameWork Directive at the age of 10: A critical review of the achievements with recommendations for the future. [link](https://doi.org/10.1016/j.scitotenv.2010.05.031)
 * Recomendations - date are not centralized, need to fix this.  Suggests enhanced data accessibility and the establishment of a Europe-wide monitoring network of reference sites. 
+
+Kuehne et al. 2017 Past, present, and future of ecological integrity assessment for fresh waters. [link](https://doi.org/10.1002/fee.1483)
+* Bioassessment trends over 40 years since CWA, implementation gaps
+* Disparity between need and availability of assessments that guide management policies
+
