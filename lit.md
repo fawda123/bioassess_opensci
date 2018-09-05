@@ -68,4 +68,5 @@ Hering et al. 2010 The European Water FrameWork Directive at the age of 10: A cr
 Kuehne et al. 2017 Past, present, and future of ecological integrity assessment for fresh waters. [link](https://doi.org/10.1002/fee.1483)
 * Bioassessment trends over 40 years since CWA, implementation gaps
 * Disparity between need and availability of assessments that guide management policies
-
+* Repeatability is increasing (p. 199) with refs, as compared to bpj indices, also "researchers are taking advantage of and conributed ot advances in data standardization, data sharing, and more robust modeling frameworks to address data gaps"
+* but link to management was less encouraging
