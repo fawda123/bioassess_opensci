@@ -70,3 +70,9 @@ Kuehne et al. 2017 Past, present, and future of ecological integrity assessment 
 * Disparity between need and availability of assessments that guide management policies
 * Repeatability is increasing (p. 199) with refs, as compared to bpj indices, also "researchers are taking advantage of and conributed ot advances in data standardization, data sharing, and more robust modeling frameworks to address data gaps"
 * but link to management was less encouraging
+* Emphasis on current knowledge gap between policy guidance and technical requirements (former not as available/accessible as the latter)
+
+Bain et al. 2000 Aquatic ecosystem protection and restoration: Advances in methods for assessment and evaluation
+* Two case study examples of how new methods wre applied at the ecosystem scale for achieving practical management goals
+
+McDonald et al. 2004 The US Environmental Protection Agency's Environmental Monitoring and Assessment Program. (cited in Kuehne et al. 2017)
