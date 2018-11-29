@@ -4,7 +4,7 @@ output:
   bookdown::word_document2:
     reference_docx: my_styles.docx
 bibliography: refs.bib
-author: "Marcus W. Beck (marcusb@sccwrp.org), Raphael D. Mazor (raphaelm@sccwrp.org), Susanna T. Theroux (susannat@sccwrp.org), David J. Gillett (davidg@sccwrp.org), Casey O'Hara (ohara@nceas.ucsb.edu), Julie Stewart Lowndes (lowndes@nceas.ucsb.edu)"
+author: "Marcus W. Beck (marcusb@sccwrp.org), Raphael D. Mazor (raphaelm@sccwrp.org), Susanna T. Theroux (susannat@sccwrp.org), David J. Gillett (davidg@sccwrp.org), Casey O'Hara (ohara@nceas.ucsb.edu), Julie Stewart Lowndes (lowndes@nceas.ucsb.edu), Greg Gearheart (greg.gearheart@waterboards.ca.gov)"
 urlcolor: blue
 link-citations: true
 ---
