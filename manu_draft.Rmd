@@ -32,10 +32,9 @@ raw <- paste('Version', raw)
 ```
 `r raw`
 
-```{r echo = F, cache = F}
+```{r echo = F, cache = F, eval = F}
 spelling::spell_check_files('manu_draft.Rmd')
 ```
-
 
 # Abstract 
 
@@ -57,7 +56,7 @@ This review will demonstrate tools and approaches for open science, which will e
 
 # Principles of open science
 
-Conventional modes of creating scientific products and more contemporary approaches that align with open science principles share the same goals.  Both are motivated by guiding principles of the scientific method that make the process of discovery transparent and repeatable. Where the conventional and open science approaches diverge is the extent to which technological advances are leveraged as instrumental tools that facilitate the entire research process.  Distinction between the two approaches can be conceptualized as the "research paper as the only and final product" for the conventional approach, whereas the open science approach is inherently linked to advances in communication and analysis that have been facilitated by the Internet and computer sciences.  As a result, the open science approach can enhance all aspects of the scientific process from initial conception of a research idea to the delivery and longevity of a research product (Figure \@ref(fig:basicflow)).  The process is iterative where products are improved by the individual and/or others, facilitated by open science tools that enhance access and reproducibility of data.
+Conventional modes of creating scientific products and more contemporary approaches that align with open science principles share the same goals.  Both are motivated by guiding principles of the scientific method that make the process of discovery transparent and repeatable. Where the conventional and open science approaches diverge is the extent to which technological advances are leveraged as instrumental tools that facilitate the entire research process.  Distinction between the two approaches can be conceptualized as the "research paper as the only and final product" for the conventional approach, whereas the open science approach is inherently linked to advances in communication and analysis that have been facilitated by the Internet and computer sciences (Table \@ref(tab:osprinc)).  As a result, the open science approach can enhance all aspects of the scientific process from initial conception of a research idea to the delivery and longevity of a research product (Figure \@ref(fig:basicflow)).  The process is iterative where products are improved by the individual and/or others, facilitated by open science tools that enhance access and reproducibility of data.
 
 The paradigm of the research paper as a final scientific product can inhibit forward progress for several reasons, particularly so in the applied sciences.  The research paper is conventionally viewed as a communication tool for scientists to report and share results among peers.  Researchers access periodicals to stay informed of scientific advances and use the information to replicate methods for follow-up analysis.  Although the primary literature continues to provide these fundamental services, this workflow is problematic when scientific products are needed to serve interests outside of the research community.  For example, the paper as an endpoint for environmental managers fails to deliver tools that are easily accessible from the practitioners perspective, both in application and interpretation.  A research paper is less likely to affect environmental change because it does not provide a mechanism to transfer actionable information to those that require scientific guidance for decision-making. Numerous studies have documented implementation failures as a result of siloing among research communities where the flow of information does not extend beyond institutional walls.  The loss of information over time that intimately describes a research product is another well-known flaw associated with the paradigm of research paper as final product [@Michener97].
 
@@ -162,6 +161,43 @@ knitr::include_graphics('figs/closedopen.png')
 ```
 
 # Tables
+
+```{r osprinc}
+tab <- data.frame(
+  `Concepts and principles` = c(
+    'Open',
+    'Open Science',
+    'Principle 1', 
+    'Principle 2', 
+    'Principle 3', 
+    'Principle 4'
+    ),
+  Description = c(
+    'Anyone can freely access, use, modify, and share for any purpose', 
+    'The practice of science in such a way that others can collaborate and contribute, where research data, lab notes and other research processes are freely available, under terms that enable reuse, redistribution and reproduction of the research and its underlying data and methods',
+    'Transparency in experimental methodology, observation, and collection of data', 
+    'Public availability and reusability of scientific data', 
+    'Public accessibility and transparency of scientific communication', 
+    'Using web-based tools to facilitate scientific collaboration'
+    ),
+  # footnote = c(
+  #   'Open Knowledge International, http://opendefinition.org/', 
+  #   'Adopted by Creative Commons, https://creativecommons.org/about/program-areas/open-science/', 
+  #   'J. Gezelter, https://www.openscience.org',
+  #   '', 
+  #   '', 
+  #   ''
+  # ), 
+  stringsAsFactors = F
+)
+
+# table stuff
+cap.val <- 'Core definitions and principles of open science, from Open Knowledge International, http://opendefinition.org/, Creative Commons, https://creativecommons.org/about/program-areas/open-science/, and J. Gezelter, https://www.openscience.org'
+
+# table
+knitr::kable(tab, booktabs = T, caption = cap.val)
+```
+
 
 ```{r rpkgtab}
 tab <- data.frame(
