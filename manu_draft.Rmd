@@ -19,10 +19,25 @@ knitr::opts_chunk$set(fig.path = 'figs/', warning = F, message = F, echo = F, ca
 
 # libraries
 library(Jabbrev)
+library(tidyverse)
+library(gridExtra)
+library(raster)
+library(sp)
+library(sf)
+library(leaflet)
+library(RColorBrewer)
+
+# functions (incl. color palettes)
+source('R/funcs.R')
+
+data(calipsa)
+data(scrs)
+data(sgrlu)
+data(shed)
+data(spat)
 
 # extract bib entries from online
 bib_scrp('manu_draft.Rmd', 'refs.bib')
-
 ```
 
 ```{r echo = F, cache = F}
@@ -161,6 +176,230 @@ knitr::include_graphics('figs/basicflow.png')
 
 ```{r closedopen, fig.cap = 'Examples of (a) closed and (b) open approaches for bioassessment applications. The green box in each subfigure represents the technical steps of the individual researcher for developing the product, the manager and stakeholder box are those that require or motivate the creation of bioassessment products, the gray boxes indicate sources of external information (data and guidance documents) as input into the technical process, and the open text indicates open components of the planning, translation, or implementation phase of a bioassessment product. Figures were adapted from @Hampton15. NGO: non-government organization, RMP: regional monitoring program.'}
 knitr::include_graphics('figs/closedopen.png')
+```
+
+```{r scapex, message = F, results = 'hide'}
+######
+# land use map
+
+thrsh <- 0.79; tails <- 0.1
+
+# land use colors
+lucol <- c('grey20', 'grey40', 'grey60', 'khaki3', 'khaki2')
+
+# nhd sgr str class
+sgrcls <- getcls2(spat, thrsh = thrsh, tails = tails, modls = 'core') %>% 
+  left_join(spat, ., by = 'COMID') %>% 
+  dplyr::select(COMID, strcls)
+
+# get biological condition expectations
+cls <- getcls2(spat, thrsh = thrsh, tails = tails, modls = 'core') %>% 
+  mutate(COMID = as.character(COMID)) 
+
+# hydrolines
+spatdat <- spat %>% 
+  dplyr::select(COMID) %>% 
+  mutate(id = as.character(1:nrow(.)))
+st_geometry(spatdat) <- NULL
+spatfrt <- spat %>% 
+  as('Spatial') %>% 
+  fortify %>% 
+  left_join(spatdat, by = 'id') %>% 
+  mutate(COMID = as.character(COMID)) %>% 
+  left_join(cls, by = 'COMID') %>% 
+  mutate(
+    strcls = factor(strcls, levels = levels(strcls))
+  ) %>% 
+  filter(!is.na(strcls))
+
+# get csci difference
+sgrscrs <- spat %>% 
+  dplyr::select(COMID, core0.50) %>% 
+  mutate(COMID = as.character(COMID)) %>% 
+  left_join(scrs, ., by = 'COMID') %>% 
+  group_by(COMID, StationCode, lat, long) %>% 
+  summarise(
+    csci = mean(csci, na.rm = TRUE)
+  ) %>% 
+  ungroup %>%
+  left_join(cls, by = 'COMID')
+
+# wshed boundary fortified
+shedfrt <- shed %>% 
+  as('Spatial') %>% 
+  fortify 
+
+# relative site scores
+sgrexp <- site_exp(spat, sgrscrs, thrsh = thrsh, tails = tails, modls = 'core') %>% 
+  dplyr::select(-data, -datcut) %>% 
+  mutate(
+    strcls = factor(strcls, levels = levels(strcls)),
+    perf = factor(perf, levels = rev(levels(perf))),
+    typelv = as.character(typelv)
+  ) %>% 
+  filter(!is.na(perf))
+
+# land use raster data
+luplo <- sgrlu %>% 
+  rasterToPoints %>% 
+  data.frame %>% 
+  dplyr::rename(`Land cover` = layer) %>% 
+  mutate(`Land cover` = factor(`Land cover`, levels = c(5, 4, 3, 2, 1), labels = c('Urban: hi', 'Urban: md', 'Urban: lo', 'Open: forest', 'Open: chaparral'))) 
+
+# separate lu legend
+luleg <- ggplot(luplo) + 
+  geom_tile(aes(x, y, fill = `Land cover`), alpha=0.8) +
+  theme_bw(base_family = 'serif') +
+  theme(
+    legend.position = 'top', 
+    legend.justification = 'left',
+    legend.box.just = 'left',
+    legend.box = 'vertical'
+  ) +  
+  scale_fill_manual('Land cover', values = lucol) +
+  guides(fill = guide_legend(ncol = 2, title.position = 'top'))
+luleg <- g_legend(luleg)
+
+# land use colors
+lucol <- c('grey20', 'grey40', 'grey60', 'khaki3', 'khaki2')
+
+# land use plot
+p1 <- ggplot(luplo) + 
+  geom_tile(aes(x, y, fill = `Land cover`), alpha=0.5) +
+  theme_void(base_family = 'serif') +
+  scale_fill_manual('Land cover', values = lucol) +
+  # scale_colour_manual('Stream segment class', values = pal_exp(levels(spatfrt$strcls)), guide = F) +
+  # geom_point(data = sgrexp, aes(x = long, y = lat, colour = strcls, shape = perf), size = 3, alpha = 0.9) +
+  # scale_shape_manual('', values = c(24, 21, 25)) +
+  # geom_path(data = spatfrt, aes(x = long, y = lat, group = id, colour = strcls), size = 0.5) +
+  # geom_polygon(data = shedfrt, aes(x = long, y = lat, group = group), fill = NA, colour = 'black', alpha = 0.7) +
+  coord_equal() +
+  theme_void(base_family = 'serif') +
+  theme(
+    legend.position = 'none', 
+    axis.title = element_blank()
+  )
+
+# land use plot
+p2 <- ggplot() +
+  theme_void(base_family = 'serif') +
+  scale_colour_manual('Stream segment class', values = pal_exp(levels(spatfrt$strcls)), guide = F) +
+  scale_shape_manual('', values = c(24, 21, 25)) +
+  geom_path(data = spatfrt, aes(x = long, y = lat, group = id, colour = strcls), size = 0.5) +
+  geom_point(data = sgrexp, aes(x = long, y = lat, fill = strcls, shape = perf), size = 3, alpha = 0.9) +
+  geom_polygon(data = shedfrt, aes(x = long, y = lat, group = group), fill = NA, colour = 'black', alpha = 0.7) +
+  scale_fill_manual(values = pal_exp(levels(sgrexp$strcls)), na.value = 'yellow', guide = F) +
+  coord_equal() +
+  theme_void(base_family = 'serif') +
+  theme(
+    legend.position = 'none', 
+    axis.title = element_blank(),
+    panel.background = element_rect(fill = "transparent"),
+    plot.background = element_rect(fill = "transparent", color = NA) 
+  )
+
+png('figs/lumap.png', height = 7, width = 4, units = 'in', res = 300, family = 'serif')
+p1
+dev.off()
+
+png('figs/clmap.png', height = 7, width = 4, units = 'in', res = 300, family = 'serif')
+p2
+dev.off()
+
+png('figs/luleg.png', height = 2, width = 2, units = 'in', res = 300, family = 'serif')
+grid.arrange(arrangeGrob(luleg))
+dev.off()
+
+#######
+# ggplot of sgr site expecations, relative scores
+
+# requires spat, scrs
+
+thrsh <- 0.79; tails <- 0.1
+
+## get sgr expectation for ggplot
+# process
+incl <- site_exp(spat, sgrscrs, thrsh = thrsh, tails = tails, modls = 'core') %>% 
+  dplyr::select(-lat, -long) %>% 
+  group_by(StationCode) %>% 
+  nest
+
+# average scors by station
+out <- sgrscrs %>% 
+  dplyr::select(StationCode, lat, long) %>% 
+  group_by(StationCode) %>% 
+  nest %>% 
+  mutate(StationCode = factor(StationCode, levels = levels(incl$StationCode))) %>% 
+  left_join(incl, ., by = 'StationCode') %>% 
+  unnest
+
+# add additional perf column for multicolor by strcls (pal_prf)
+# remove NA csci
+ggsgrexp <- get_perf_mlt(out) %>% 
+  filter(!is.na(strcls))
+
+# CSCI scores and expectations
+toplo1 <- ggsgrexp %>%
+  dplyr::select(COMID, StationCode, datcut, strcls, csci, perf, typelv, perf_mlt) %>%
+  unnest %>%
+  mutate(
+    strcls = factor(strcls, levels = c("likely constrained", "possibly constrained", "possibly unconstrained", "likely unconstrained")),
+    perf = factor(perf, levels = levels(perf))
+  ) %>%
+  dplyr::rename(
+    `Stream Class` = strcls,
+    `Relative\nscore` = perf_mlt,
+    Type = typelv
+  )
+
+# total expected range
+toplo2 <- ggsgrexp %>%
+  dplyr::select(COMID, StationCode, data, strcls) %>%
+  unnest %>%
+  mutate(strcls = factor(strcls, levels = levels(strcls))) %>%
+  dplyr::rename(`Stream Class` = strcls)
+
+# median expectation
+toplo3 <- ggsgrexp %>%
+  dplyr::select(COMID, StationCode, datcut) %>%
+  unnest %>%
+  filter(grepl('0\\.50$', var)) 
+
+# plot, context
+p3 <- ggplot(toplo1, aes(y = StationCode, x = val)) +
+  geom_line(data = toplo1, aes(x = val, colour = `Stream Class`), alpha = 0.1, size = 2) +
+  geom_line(aes(colour = `Stream Class`), alpha = 0.6, size = 2) +
+  geom_point(data = toplo3, colour = 'white', size = 1, alpha = 1, shape = 15) +
+  theme_bw(base_family = 'serif', base_size = 12) +
+  theme(
+    axis.text.y = element_blank(),
+    # axis.title.y = element_blank(),
+    # axis.title.x = element_blank(), 
+    # axis.ticks.y = element_blank(), 
+    legend.position = 'top', 
+    title = element_text(size = 10)
+  ) +
+  scale_x_continuous('CSCI') +
+  scale_y_discrete('Site') +
+  scale_colour_manual('Segment class', values = pal_exp(levels(toplo1$`Stream Class`)), drop = F) +
+  geom_point(aes(x = csci, fill = `Stream Class`, shape = perf), size = 2.5, alpha = 0.8) +
+  geom_vline(xintercept = thrsh, linetype = 'dashed', size = 1) +
+  scale_shape_manual('Site score', values = c(25, 21, 24)) +
+  scale_fill_manual(values = pal_exp(levels(toplo1$`Stream Class`)), na.value = 'yellow', guide = F) +
+  guides(shape = guide_legend(title.position = 'top'), colour = guide_legend(title.position = 'top', ncol = 2))
+p3leg <- g_legend(p3)
+p3 <- p3 + theme(legend.position = 'none')
+
+png('figs/sgrexp.png', height = 7, width = 4, units = 'in', res = 300, family = 'serif')
+p3
+dev.off()
+
+png('figs/sgrexpleg.png', height = 1, width = 7, units = 'in', res = 300, family = 'serif')
+grid.arrange(arrangeGrob(p3leg))
+dev.off()
+```
+```{r scapexfig, fig.cap = 'SCAPE example'}
+knitr::include_graphics('figs/scapex.png')
 ```
 
 # Tables
