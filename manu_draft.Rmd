@@ -6,6 +6,7 @@ output:
 bibliography: refs.bib
 author: "Marcus W. Beck (marcusb@sccwrp.org), Casey O'Hara (ohara@nceas.ucsb.edu), Julia Stewart Lowndes (lowndes@nceas.ucsb.edu), Raphael D. Mazor (raphaelm@sccwrp.org), Susanna T. Theroux (susannat@sccwrp.org), David J. Gillett (davidg@sccwrp.org), Belize Lane (belize.lane@usu.edu), Greg Gearheart (greg.gearheart@waterboards.ca.gov)"
 urlcolor: blue
+csl: freshwater-science.csl
 link-citations: true
 ---
 
