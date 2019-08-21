@@ -41,12 +41,7 @@ data(spat)
 bib_scrp('manu_draft.Rmd', 'refs.bib')
 ```
 
-```{r echo = F, cache = F}
-raw <- system('git log -1', intern = TRUE)
-raw <- raw[grep('^Date', raw)]
-raw <- paste('Version', raw)
-```
-`r raw`
+`r paste('Compiled', Sys.time())`
 
 ```{r echo = F, cache = F, eval = F}
 spelling::spell_check_files('manu_draft.Rmd')
