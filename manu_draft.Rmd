@@ -4,7 +4,7 @@ output:
   bookdown::word_document2:
     reference_docx: my_styles.docx
 bibliography: refs.bib
-author: "Marcus W. Beck (marcusb@sccwrp.org), Casey O'Hara (ohara@nceas.ucsb.edu), Julia Stewart Lowndes (lowndes@nceas.ucsb.edu), Raphael D. Mazor (raphaelm@sccwrp.org), Susanna T. Theroux (susannat@sccwrp.org), David J. Gillett (davidg@sccwrp.org), Belize Lane (belize.lane@usu.edu), Greg Gearheart (greg.gearheart@waterboards.ca.gov)"
+author: "Marcus W. Beck (marcusb@sccwrp.org), Casey O'Hara (ohara@nceas.ucsb.edu), Julia Stewart Lowndes (lowndes@nceas.ucsb.edu), Raphael D. Mazor (raphaelm@sccwrp.org), Susanna Theroux (susannat@sccwrp.org), David J. Gillett (davidg@sccwrp.org), Belize Lane (belize.lane@usu.edu), Greg Gearheart (greg.gearheart@waterboards.ca.gov)"
 urlcolor: blue
 csl: ecology.csl
 link-citations: true
@@ -411,7 +411,7 @@ tab <- data.frame(
 )
 
 # table stuff
-cap.val <- 'Core definitions and principles of open science, from Open Knowledge International, http://opendefinition.org/, Creative Commons, https://creativecommons.org/about/program-areas/open-science/, and J. Gezelter, https://www.openscience.org'
+cap.val <- 'Core definitions and principles of open science, from Open Knowledge International, http://opendefinition.org/, Creative Commons, https://creativecommons.org/about/program-areas/open-science/, and D. Gezelter, http://openscience.org/'
 
 # table
 knitr::kable(tab, booktabs = T, caption = cap.val)
