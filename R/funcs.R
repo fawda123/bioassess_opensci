@@ -494,8 +494,9 @@ getcls <- function(datin, thrsh = 0.79, tails = 0.05,  modls = c('core', 'full')
     ) %>% 
     unnest(medv) %>% 
     arrange(medv) %>% 
+    ungroup %>% 
     mutate(COMID = factor(COMID, levels = COMID)) %>% 
-    unnest(strcls_int) 
+    unnest(strcls_int)
   
   # subset lbs by those in interval
   lbs <- unique(dat$strcls_int) %>% 
@@ -569,7 +570,8 @@ getcls2 <- function(datin, thrsh = 0.79, tails = 0.05, modls = c('core', 'full')
       
     ) %>% 
     dplyr::select(-data) %>% 
-    unnest 
+    unnest(strcls_int) %>% 
+    ungroup
   
   # subset lbs by those in interval
   lbs <- unique(dat$strcls_int) %>% 
@@ -599,7 +601,7 @@ getcls2 <- function(datin, thrsh = 0.79, tails = 0.05, modls = c('core', 'full')
 site_exp <- function(datin, scrs, thrsh = 0.79, tails = 0.05, lbs = list('over scoring' = 2, 'expected' = 1, 'under scoring' = 0),
                      ...
 ){
-  
+
   # site csci scores
   scrs <- scrs %>% 
     mutate(COMID = as.character(COMID)) %>% 
