@@ -1,0 +1,526 @@
+%% Submissions for peer-review must enable line-numbering
+%% using the lineno option in the \documentclass command.
+%%
+%% Preprints and camera-ready submissions do not need
+%% line numbers, and should have this option removed.
+%%
+%% Please note that the line numbering option requires
+%% version 1.1 or newer of the wlpeerj.cls file, and
+%% the corresponding author info requires v1.2
+
+\documentclass[fleqn,10pt,lineno]{wlpeerj} % for journal submissions
+
+% ZNK -- Adding headers for pandoc
+
+\setlength{\emergencystretch}{3em}
+\providecommand{\tightlist}{
+\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\usepackage[unicode=true]{hyperref}
+\usepackage{longtable}
+
+
+% Pandoc syntax highlighting
+% See https://github.com/rstudio/rticles/issues/182
+
+
+% Pandoc Header
+
+\title{The importance of open science for biological assessment}
+
+\author[1]{Marcus W. Beck}
+
+\corrauthor[1]{Marcus W. Beck}{\href{mailto:mbeck@tbep.org}{\nolinkurl{mbeck@tbep.org}}}
+\author[2]{Casey O'Hara}
+
+\author[2]{Julia Stewart Lowndes}
+
+\author[1]{Raphael D. Mazor}
+
+\author[]{Susanna Theroux}
+
+\author[1]{David J.Gillett}
+
+\author[3]{Belize Lane}
+
+\author[4]{Greg Gearheart}
+
+
+\affil[1]{Southern California Coastal Water Research Project, 3535 Harbor Blvd}
+\affil[2]{National Center for Ecological Analysis and Synthesis, 735 State St}
+\affil[3]{Utah State University, 1600 Canyon Rd, Logan,UT 84321 USA}
+\affil[4]{California State Water Resources Control Board, 1001 I Street, Sacramenta, CA 95814 USA}
+
+
+%
+% \author[1]{First Author}
+% \author[2]{Second Author}
+% \affil[1]{Address of first author}
+% \affil[2]{Address of second author}
+% \corrauthor[1]{First Author}{f.author@email.com}
+
+% 
+
+\begin{abstract}
+Open science principles that seek to democratize science can effectively bridge the gap between researchers and environmental managers. However, widespread adoption has yet to gain traction for the development and application of bioassessment products. At the core of this philosophy is the concept that research should be reproducible and transparent, in addition to having long-term value through effective data preservation and sharing. In this paper, we review core open science concepts that have recently been adopted in the ecological sciences and emphasize how adoption can benefit the field of bioassessment for both prescriptive condition assessments and proactive applications that inform environmental management. An example from the state of California demonstrates effective adoption of open science principles through data stewardship, reproducible research, and engagement of stakeholders with multimedia applications. We also discuss technical, sociocultural, and institutional challenges for adopting open science, including practical approaches for overcoming these hurdles in bioassessment applications.
+% Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text.
+\end{abstract}
+
+\begin{document}
+
+\flushbottom
+\maketitle
+\thispagestyle{empty}
+
+Compiled 2020-02-28 15:07:42
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+Bioassessment is an essential element of aquatic monitoring programs that helps guide decisions for managing the ecological integrity of environmental resources. Legal mandates to assess biological condition have stimulated the development of bioassessment programs and tools in the United States (Clean Water Act, CWA), Canada (Canada Waters Act), and Europe (Water Framework Directive). Decades of research have supported the development of assessment indices for multiple assemblages with regional applications in streams, rivers, lakes, and marine environments (Karr et al. 1986; Kerans and Karr 1994; Fore and Grafe 2002; Beck and Hatch 2009; Borja, Ranasinghe, and Weisberg 2009). Substantial technical advances have been made in measuring biological responses to environmental change (C. P. Hawkins, Norris, Gerritsen, et al. 2000; C. P. Hawkins, Norris, Hogue, et al. 2000), how these responses can be distinguished from natural environmental variation (Stoddard et al. 2006; Hawkins, Olson, and Hill 2010), and interpreting the impacts of these changes (Davies and Jackson 2006).
+
+Integrating bioassessment products (e.g., scoring indices, causal assessment protocols) into management or regulatory frameworks can be challenging, despite the technological advances (Kuehne et al. 2017). How a bioassessment product is used in practice to inform decisions and prioritize management actions can differ from why it may have been originally developed. Numerous assessment products have been developed for specific regional applications (Birk et al. 2012) and concerns about redundancy, comparability, duplicated effort, and lack of coordinated monitoring have recently been highlighted (Cao and Hawkins 2011; Poikane et al. 2014; Kelly et al. 2016; Nichols et al. 2016). Kuehne, A. L. Strecker, and Olden (2019) recently highlighted a lack of institutional connectivity among actors with expertise in freshwater assessment as a hallmark of the status quo in which applied science is conducted. Moreover, existing indices may not be easily calculated by others beyond initial research applications (Hering et al. 2010; Nichols et al. 2016) or may be incorrectly applied based on differences between goals for developing an index and the needs of management programs (Dale and Beyeler 2001; Stein et al. 2009). The abundance of available products can be a point of frustration for managers given a lack of guidance for choosing among alternatives, particularly as to how different assessment products relate to specific management, monitoring, or policy objectives (Dale and Beyeler 2001; Stein et al. 2009).
+
+To address these challenges, a new mode of operation is needed where method development is open and transparent, developed products are discoverable and reproducible, and most importantly, implementation in the management community is intuitive and purposeful. Open science principles that democratize all aspects of the scientific method can help meet these needs and there is a unique opportunity in bioassessment to leverage openness to support public resources. Others have advocated more broadly for inclusion of open science principles in the ecological sciences (Hampton et al. 2015, 2016; Lowndes et al. 2017). Open science has also influenced how research workflows are conceptualized in other disciplines (e.g., archaeology, Marwick et al. 2016; behavioral ecology, Ihle et al. 2017; hydrology, Slater et al. 2019; vegetation sciences, Collins 2016). Adopting an open science paradigm in bioassessment is particularly relevant compared with other fields given the explicit need to develop products that are accessible to the management community. Legal and ethical precedents in bioassessment may also necessitate open data sharing given that environmental monitoring programs are often established to protect and maintain publicly-owned natural resources.
+
+This review demonstrates tools and approaches for open science to empower the research and management community to embrace a new mode of thinking for bioassessment applications. These approaches are expected to benefit the bioassessment research community by augmenting existing workflows for developing assessment products and improving their ability to address environmental issues by bridging the gap between the scientific, management, and regulatory communities. As such, this paper is written primarily for the research team that develops bioassessment products, but we also write for the funders and users (e.g., regulators and managers) of these products to emphasize the value of investing in open science for the protection of public resources. Herein, open science `tools' describe best practices and specific applications that use an open philosophy to support applied science.
+
+\hypertarget{principles-of-open-science}{%
+\section{Principles of open science}\label{principles-of-open-science}}
+
+Conventional modes of creating scientific products and more contemporary approaches that align with open science principles share the same goals. Both are motivated by principles of the scientific method that make the process of discovery transparent and repeatable. Where the conventional and open science approaches diverge is the extent to which technological advances facilitate the entire research process. Distinction between the two approaches can be conceptualized as the ``research paper as the only and final product'' for the conventional approach, whereas the open science approach is inherently linked to advances in communication and analysis that have been facilitated by the Internet and computer sciences (Table \ref{tab:osprinc}). As a result, the open science approach can enhance all aspects of the scientific process from initial conception of a research idea to the delivery and longevity of a research product (Figure \ref{fig:basicflow}). The process is iterative where products are improved by the individual and/or others, facilitated by open science tools that enhance access and reproducibility of data.
+
+The paradigm of the research paper as a final scientific product can inhibit the uptake of research methods and findings by environmental managers. The research paper is conventionally viewed as a communication tool for scientists to report and share results among peers. Researchers access periodicals to stay informed of scientific advances and use the information to replicate and improve on methods for follow-up analysis. Although the primary literature continues to serve this critical role, this workflow is problematic when scientific products are needed to serve interests outside of the research community. For example, the paper as an endpoint for environmental managers fails to deliver products that are easily accessible from the practitioners perspective, both in application and interpretation. A research paper is less likely to effect environmental change because it does not provide a mechanism to transfer actionable information to those that require scientific guidance for decision-making, such as sharing analysis code or results that describe output from assessment products. Numerous studies have documented implementation failures as a result of siloing among research communities where the flow of information does not extend beyond institutional walls (e.g., Mitchell 2005; Liu et al. 2008). Information loss over time is another concern associated with the paradigm of research paper as final product (Michener et al. 1997), particularly as intimate knowledge of study details is lost as new projects are initiated or individuals leave institutions.
+
+\hypertarget{open-data-as-a-component-of-the-open-science-process}{%
+\subsection{Open data as a component of the open science process}\label{open-data-as-a-component-of-the-open-science-process}}
+
+Open data is a fundamental component of the broader open science process described in Figure \ref{fig:basicflow}. Under this mode of thinking, the research team becomes stewards of its data. For bioassessment data, government institutions may be the primary stewards of information that supports product development within a broader research team. Stewardship allows the data to be treated as a dynamic product with a traceable and replicable provenance (i.e., origin), rather than proprietary and serving only the internal needs of an immediate research goal. Metadata that describe the structure and history of a dataset ensure the data have an identity. Metadata also encourage adoption of core data structures that allow integration across different sources, which is critical for collaboration across institutional boundaries (Horsburgh et al. 2016; Hsu et al. 2017). Other open science practices, such as integration of data with dynamic reporting tools or submitting data to a federated repository (i.e., a decentralized database system for coordination and sharing), can facilitate communication for researchers and those for which the research was developed (Bond-Lamberty, Smith, and Bailey 2016).
+
+Open data can benefit research by contributing to an increase in novel products created through collaboration. Collaborative publications have increased in the environmental sciences as research teams leverage open data to create synthesis products that allow novel insights from comparisons across multiple datasets. Quantitative meta-analyses and systematic reviews are increasingly used to extract information from the primary literature (Carpenter et al. 2009; Lortie 2014). In addition, open data products can increase efficiency of the individual researcher and a collective research team by encouraging collaborators to adopt an open science workflow. Many tools developed within the software and computer science community to facilitate open process and the creation of open data are now easily accessible to environmental scientists (Yenni et al. 2019). Version control software (e.g, Git, GitHub), open source programming languages (e.g, R, Python), and integrated development environments (IDEs, e.g., RStudio, Spyder) can all be leveraged to dynamically create and share open data products that can build institutional memory. These tools promote deliberate and shared workflows among researchers that can lead to better science in less time (Lowndes et al. 2017) and have proven useful in recent applications in the hydrologic sciences (Idaszak et al. 2017; Slater et al. 2019).
+
+Open access to data can also benefit management and regulatory communities. Openness can improve the value of data from monitoring programs by facilitating data discovery and synthesis, often through the adoption of a common metadata structure and integration of data within federated data networks (e.g., \href{https://www.dataone.org/}{DataONE}, \href{https://irods.org/}{iRODS}). Research institutions can also use open data maintained by management or regulatory communities to develop products that directly support the mission of the latter, e.g., assessment methods developed from long-term monitoring datasets that identify priority areas to focus management actions or fulfill regulatory obligations. Open data can also improve public trust in scientific findings by exposing the underlying information used to develop a research product (Grand et al. 2012). Similar concepts are used in ``blockchain'' technologies that allow public financial transactions in an open, distributed format, as for trading in cryptocurrencies (Pilkington 2016). Increased trust could facilitate eventual adoption of proposed rules or regulations that are based on research products created from open data. More efficient and effective implementation of potential regulations may also be possible if supporting data are openly available.
+
+\hypertarget{applying-open-science-principles-to-bioassessment}{%
+\section{Applying open science principles to bioassessment}\label{applying-open-science-principles-to-bioassessment}}
+
+Here we provide a detailed description of open science processes that the bioassessment community could leverage to create reproducible, transparent, and discoverable research products for environmental managers. The below examples require understanding the distinction between the general open science process in Figure \ref{fig:basicflow}, open data as an individual component of the open science process, and the technology-based tools that can be used to achieve these ends. Both the tools and open data are critical components that facilitate the broader process to achieve the principles outlined in Table \ref{tab:osprinc}. ``Openness'' of process, tools, and data exists on a continuum, and incremental improvements can transform an individual's and research group's practice over time. We encourage awareness that an open process adopts the open science tools that are appropriate for a research question and the creation of open data can be a fundamental component of the process. Acceptance by the research team and collaborators of the concepts described in Table \ref{tab:osprinc} is critical to achieving openness.
+
+The overall process is shown in Figure \ref{fig:open} as an expansion of general concepts in Figure \ref{fig:basicflow}. This iterative flow of information is facilitated by 1) openly sharing planning documents, 2) using established metadata standards to document synthesized data products, 3) hosting data products on open repositories, 4) creating reproducible summary documents that integrate the data and research products, and 5) incorporating the developed product into interactive applications that deliver the results to the managers and stakeholders. The technical phase of defining research goals, collecting and synthesizing data, and developing the bioassessment product are primary tasks of the research team. However, the open science process is distinguished by the flow of information to and from the research phase that can benefit the specific project and the science of bioassessment as a whole.
+
+\hypertarget{developing-bioassessment-goals}{%
+\subsubsection{Developing bioassessment goals}\label{developing-bioassessment-goals}}
+
+In an open science process, the goals identified by the research team for developing a bioassessment product should occur through direct, two-way interaction with the management or regulatory institution that requires the product. Although such an approach has historically been used to develop bioassessment products, the interaction in an open science workflow differs in how information is exchanged. This exchange can be accomplished through direct communication and sharing of planning documents to ensure all decisions are transparent, i.e., open planning. In person meetings are ideal, but planning documents are dynamic and will require remote sharing and revision as ideas progress. Online tools such as \href{https://www.google.com/docs/about/}{Google documents}, \href{https://slack.com/}{Slack} discussion channels, and open lab notebooks can be instrumental for collaboration. More informal approaches, such as blogging and sharing ideas on social media, can expose new concepts to the broader community for guidance (Woelfle, Olliaro, and Todd 2011; Darling et al. 2013). Overall, the research team should use these tools to identify stakeholder needs while also considering the balance between the research goals and limitations of the data to meet these goals. This approach will ensure that the needs of the management and stakeholder communities will be consistent with the services provided by the research product.
+
+\hypertarget{curating-bioassessment-data}{%
+\subsubsection{Curating bioassessment data}\label{curating-bioassessment-data}}
+
+After project goals are established, the research team identifies requirements and sources of data that need to be synthesized to meet the research needs. Bioassessment data, or more generally, biological data obtained from field sampling have a unique set of challenges that require added vigilance in data stewardship (Cao and Hawkins 2011). Species identification requires a tradeoff between taxonomic specificity and cost (Lenat and Resh 2001; Chessman, Williams, and Besley 2007). Species names also change regularly requiring updates to standard taxonomic effort (\href{http://www.safit.org/Docs/STE_1_March_2011_7MB.pdf}{STE}) tables that are critical for many biological indices. Unidentified or ambiguous taxa must also be explicitly treated in analysis workflows (Cuffney, Bilger, and Haigler 2007), e.g., are they treated as missing values or are they substituted with coarser taxonomic designations? Environmental data that describe physical or chemical conditions are also critical to support development of an assessment index, as well as understanding potential stressors or background condition that could influence biological condition.
+
+Open science tools can facilitate the curation of bioassessment data by addressing the above challenges. For example, a multimetric index may require taxonomic data collected at multiple sites by different institutions, whereas the output data may include summary scores, individual metrics, and any additional supporting information to assess the quality of the output. In an open science workflow, these data products can be documented using a standardized metadata language (e.g., Ecological Metadata Language Standard, or \href{https://knb.ecoinformatics.org/external//emlparser/docs/index.html}{EML}) which describes the who, what, and why to ensure the data have an identity. Adoption of a metadata standard also ensures that a machine-readable file is produced to allow integration into a data repository. This will allow a synthesized data product to be discoverable beyond the specific research application and will provide metadata to help others understand the context of the data (e.g., Idaszak et al. 2017). Finally, the dataset can be assigned a unique digital object identifier (DOI, e.g., through \href{https://zenodo.org/}{Zenodo}) that provides a permanent address and is also citable to allow researchers to track usage of a bioassessment data product.
+
+In an open paradigm, the data itself is a product to achieve the research goals and also becomes available to the research and management community as a fully documented source of information that has value beyond the specific project. The openness of the synthesized data product is one of the primary means of facilitating the application of a bioassessment product. The synthesized data product can be used by the research team to create interactive applications for stakeholders to share and explore the data and is also fully integrated into summary reports using software for generating dynamic documents (e.g, using \texttt{knitr}, Xie 2015; RMarkdown, Allaire et al. 2018; Jupyter notebooks, Kluyver et al. 2016). Continuous integration services can automate quality control and regularly update data products as new information is collected (Yenni et al. 2019). The data product also becomes available on an open data repository that is discoverable by other researchers and can contribute to alternative scientific advances beyond the immediate goals (e.g., Hydroshare for the hydrologic sciences, Idaszak et al. (2017)).
+
+\hypertarget{using-r-for-bioassessment-application}{%
+\subsubsection{Using R for bioassessment application}\label{using-r-for-bioassessment-application}}
+
+The R statistical programming language (RDCT (R Development Core Team) 2018) is one of the most commonly used analysis platforms in the environmental sciences (Lai et al. 2019; Slater et al. 2019) and many existing R packages have value for the bioassessment community (Table \ref{tab:rpkgtab}). For managing the day to day tasks of working with multiple datasets, the \texttt{tidyverse} suite of packages provides the necessary tools to import, wrangle, explore, and plot almost any data type (Wickham 2017). These packages are developed around the concept of ``tidy'' data that provide a common and natural framework for working with data (Wickham 2014). The \texttt{tidyverse} also includes the powerful \texttt{ggplot2} package that is based on a syntactical grammar of graphics for plotting (Wilkinson 2005; Wickham 2009). This package provides a set of independent plotting instructions that can be built piecewise and is a departure from other graphics packages that represent a collection of special cases that limit the freedom of the analyst. In bioassessment, \texttt{ggplot2} can be used both in an exploratory role during the development phase and also to create publication quality graphics. More importantly, this package provides the building blocks to create effective data visualizations that convey important components of a bioassessment product to managers and stakeholders.
+
+Bioassessment data are inherently spatial and recent package development has greatly improved the ability to analyze and map geospatial data in R. The \texttt{raster} package can used to read/write, manipulate, analyze, and model grid-based spatial data (Hijmans 2019), which are often common supporting layers for bioassessment (e.g., elevation or climate data). For vector data (i.e., points, lines, and polygons), the \texttt{sf} package (``simple features'', Pebesma (2018)) was first released in 2016 and has quickly become the most highly-used approach for working with spatial information in R. The \texttt{sf} package uses principles of data storage that parallel those from the \texttt{tidyverse} by representing spatial objects in a tidy and tabular format. This facilitates analysis by presenting complex spatial structures in a readable format that can be integrated in workflows with existing packages, including other mapping packages (e.g., \texttt{leaflet}, Cheng, Karambelkar, and Xie 2018; or \texttt{mapview}, Appelhans et al. 2018). This allows the research team to use a workflow that is focused in a single environment, rather than using separate software for statistical and geospatial analysis.
+
+Several existing R packages can be used to develop statistical models of bioassessment data that are a necessary component of many analyses. Random forest models have been used to develop predictive bioassessment indices that compare observed taxa to modeled expectations (i.e., O/E indices). The \texttt{randomForest} package (Liaw and Wiener 2002) uses an ensemble learning approach that is robust to complex, non-linear relationships and interactions between variables. These models are particularly useful with large, regional datasets that describe natural and anthropogenic gradients in condition (Laan and Hawkins 2014; Mazor et al. 2016). Many other modeling packages are available in R that can support index development, such as exploratory analyses to evaluate biological response or identifying significant associations of organisms with stressor gradients. The \texttt{nlme} package can be used to create non-linear mixed effect models that are more flexible than standard regression approaches (Pinheiro et al. 2018). The \texttt{nlme} package can develop models for nested sampling designs, such as repeat visits to sample sites or otherwise confounding variables that contribute information but are not unique observations (Mazor et al. 2014). The \texttt{mgcv} package provides similar functionality as \texttt{nlme}, but uses an additive modeling approach where individual effects can be evaluated as the sum of smoothed terms (Wood 2017). The \texttt{mgcv} package is often applied to model biological response to stressor gradients (Yuan 2004; Taylor et al. 2014)
+
+Other R packages have been developed specifically for bioassessment. For example, the \texttt{TITAN2} package can be used to develop quantitative evidence of taxon-specific changes in abundance and occurrence across environmental gradients (Baker, King, and Kahle 2015). Results from this package can support exploratory analysis for developing bioassessment products, such as identifying indicator species or establishing numeric criteria (Taylor et al. 2018). The results can be also be used post hoc to evaluate potential response of a biological index with changing environmental conditions, such as proposed management actions for rehabilitation (King et al. 2011). Alternatively, the \texttt{indicspecies} package provides similar functionality but is based only on species occurrence or abundance matrices across sites (De Caceres and Legendre 2009). This package can be used to identify species that occur at particular sites if continuous environmental data are unavailable, such as those that are representative of reference conditions (Bried et al. 2014). Finally, the \texttt{vegan} package has been a staple among community ecologists for multivariate analyses in R, such as clustering and ordination (Oksanen et al. 2018).
+
+Although the R network includes over 10000 user contributed packages, only a handful of these packages are specific to bioassessment. Community practices have allowed R to reach new audiences where new packages build on the work of others and are transportable between users and operating systems, rather than all researchers reinventing the wheel through duplicated effort. Formalized communities, such as \href{https://ropensci.org/}{rOpenSci}, encourage standardization and review of contributed packages within the ecological sciences to make scientific data retrieval reproducible. Several tools have also been developed and published in the last five years that greatly simplify the process of creating new packages in R (Wickham 2015; Wickham, Hester, and Chang 2018). The advantages of creating and sharing R packages that are specific to bioassessment applications are important for several reasons. First, an R package compartmentalizes technical instructions developed during the research phase that can be executed by anyone with access to the software. This allows the technical elements required for the execution of a bioassessment product to be included, while allowing the end user to focus on how the output can be used to inform decision-making. R packages also require explicit documentation of the functions and data requirements. As such, package users will not only have access to underlying code but also understand the why and what for different package functions.
+
+Finally, R can be used to create interactive applications that deliver bioassessment products to stakeholders and managers in entirely novel contexts. In particular, the \texttt{shiny} package was first released for R in 2012 and provides programming tools built around concepts of reactivity, where data inputs and outputs can be modified in real time (Chang et al. 2018). A \texttt{shiny} application is an interactive user interface that is developed with R code, but is a standalone product that can be used without any programming experience. These applications are deployed online and can extend the reach of bioassessment products to those that require the information for decision-making but otherwise do not have the time or resources to learn R. Applications built in \texttt{shiny} can also be easily linked to other R packages. For example, a \texttt{shiny} website could be created to allow users to upload raw data and estimate and report bioassessment scores using an R package developed externally. This can extend the accessibility of a bioassessment product while maintaining the technical integrity of the original tool. Moreover, \texttt{shiny} applications are completely customizable and can be tailored by the developer to the specific needs of any user. This distinction separates \texttt{shiny} from other web-based analysis platforms.
+
+\hypertarget{open-science-in-practice-the-scape-project}{%
+\section{Open science in practice: The SCAPE project}\label{open-science-in-practice-the-scape-project}}
+
+Although bioassessment products have been sufficiently developed in California (USA), there are no narrative or numeric criteria in place to support designated aquatic life uses in wadeable streams, nor are bioassessment data actively used to support conservation or watershed management. Indices using benthic macroinvertebrates and algae have been developed that provide consistent indications of biological condition across the diverse geography and climates in the state (Fetscher et al. 2013; Ode et al. 2016; Mazor et al. 2016). A physical habitat index has also been developed that provides complementary information supporting bioassessment data (Rehn, Mazor, and Ode 2018). Combined, these indices represent significant achievements in overcoming technical challenges for developing accurate and interpretable bioassessment products. However, these products are not used at a statewide scale to inform decisions and past efforts for stream management have only used a fraction of available products. A synthesis of condition assessments is needed to effectively implement bioassessment products in California and data must be presented in a context that is relevant to the needs of decision makers.
+
+Recent regulatory initiatives in California have established a foundation for openness that could greatly improve the application of bioassessment products to support decision-making. In particular, these initiatives have set a precedent for openly sharing data collected with public funds. The Open and Transparent Water Data Act passed by the state legislature in 2016 requires water quality institutions to ``create, operate, and maintain a statewide integrated water data platform that, among other things, would integrate existing water and ecological data information from multiple databases and provide data on completed water transfers and exchanges'' (\href{https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=201520160AB1755}{AB 1755, Dodd, 2015-2016}). This legislation also calls for state agencies to ``develop protocols for data sharing, documentation, quality control, public access, and promotion of open-source platforms and decision support tools related to water data''. These aspirations were further supported by a \href{https://www.waterboards.ca.gov/press_room/press_releases/2018/pr_water_data_071018.pdf}{resolution} on July 10, 2018 that formally committed the State Water Resources Control Board to ``provide broader access to data used to make local, regional, and statewide water management and regulatory decisions in California''. These recent initiatives in California have similarly been observed at the national level. For example, the \href{https://www.datacoalition.org/}{Data Coalition} is an advocacy group that operates on behalf of the private and public sector for the publication of government data in a standardized and open format. The \href{https://internetofwater.org/}{Internet of Water} also operates at the national-level by focusing on strengthening connections between data producers and users through centralized data hubs and data standards.
+
+Open science tools have recently been used in California to address bioassessment implementation challenges in developed landscapes. The Stream Classification and Priority Explorer, or SCAPE (Beck 2018b; Beck et al. 2019), was developed using an open science framework to help identify reasonable management goals for wadeable streams using existing bioassessment and watershed data. The SCAPE tool represents both a modeling approach to help prioritize management goals (Figure \ref{fig:scapexfig}) and a set of open science products for direct application to environmental managers. The modeling component addresses a practical problem of achieving reference conditions in developed landscapes, where channel modification is common. Using the National Hydrography Dataset (NHD-Plus; McKay et al. 2012) and watershed predictors (StreamCat; Hill et al. 2016), the model classifies stream segments as biologically ``constrained'' or ``unconstrained'' by landscape alteration. This classification system can be used to set management priorities based on the constraint class. For example, a monitoring site with an observed biological index score that is above a predicted range could be assigned a higher management priority relative to a site that is scoring within the range that is expected based on landscape development.
+
+Open science tools were critically important for translating and delivering SCAPE products to decision-makers. Local stakeholder engagement to identify research goals guided the technical development process of SCAPE. All analyses, including model development and validation, were conducted using R. A version control system (Git) and online hosting (\href{https://github.com/SCCWRP/SCAPE}{GitHub}) also allowed full transparency of decisions that were made to create the SCAPE model. A permanent DOI was assigned through Zenodo to track downloads and portability of source code (Beck 2018b). Importantly, an online, interactive web page (\url{https://sccwrp.shinyapps.io/SCAPE}) greatly increased the impact and relevance of SCAPE by improving stakeholder understanding through direct interaction with key decision points that influenced model output. A manuscript describing the technical components of the model was created using \texttt{knitr} and \texttt{RMarkdown} (Xie 2015; Allaire et al. 2018). This increased efficiency of the writing process also minimized the potential of introducing errors into tables or figures by eliminating the need to copy results between different writing platforms. Finally, a geospatial data file from the model was also made public on a federated data repository, which included metadata and plain language documentation to track provenance of the original information (Beck 2018a).
+
+\hypertarget{limitations-and-opportunities}{%
+\section{Limitations and opportunities}\label{limitations-and-opportunities}}
+
+Although the case for open science in bioassessment is appealing, the widespread adoption of these principles in practice is inhibited by inertia of existing practices, disciplinary culture, and institutional barriers. Conventional and closed workflows used by many scientists are adopted and entrenched because of ease of use, precedence, and familiarity, yet they can be inefficient, inflexible, and difficult to communicate or replicate. Open science tools can improve analysis, documentation, and implementation through greater flexibility, but they expose research teams to entirely new concepts and skillsets in which they may never have been trained (e.g., Idaszak et al. 2017). Not only are the required skillsets demanding, but the open science toolbox continues to expand as new methods are developed and old methods become obsolete. This requires a research team to stay abreast of new technologies as they are developed and weigh the tradeoffs of adopting different workflows for different research tasks.
+
+Advocates for open science are well aware of the technical challenges faced by individuals and research teams that have never been exposed to the core concepts. Most importantly, education and training (e.g., through \href{https://carpentries.org}{The Carpentries}) remain key components for developing skillsets among researchers where the focus is both on learning new skills for transferability and realizing their value for improving science as a whole (Hampton et al. 2017). A goal of many training curricula is to instill confidence in new users by developing comfort with new workflows, such as replacing a point-and-click style of analysis with one focused on using a command line through a computer terminal. Other approaches to demonstrate the value of new techniques use a side by side approach of closed vs open workflows to show the increased efficiency and power of the latter. Adoption becomes much more reasonable once users realize the value of investing in learning a new skill.
+
+Advocates of open science also recognize the limitations of teaching in that not all audiences can be reached and not all materials are retained or even used after training. A strategy of empowering trainees to become trainers and teach others at their home institutions (e.g., train-the-trainer \href{https://blog.rstudio.com/2019/02/06/rstudio-conf-2019-workshops/}{workshops} and \href{https://carpentries.github.io/trainer-training/}{programs}) enables open science to reach more individuals, and benefits science more broadly as they develop technical and communication skills, and build local communities. Those that also adopt new workflows through training can also direct their research products to facilitate collaboration with non-adopters rather than the latter synthesizing and analyzing their data in potentially suboptimal ways (Touchon and McCoy 2016). These ``champions'' can be a voice of encouragement for others by demonstrating how new tools can be introduced and learned over time through shared experiences (Lowndes et al. 2017). This also encourages the development of a community of practice that shares and learns together to navigate the collection of existing and developing open science tools. Champions of open science should also be vocal proponents that spread awareness of the value of open science tools, particularly to those that make decisions on project resources. Department heads or administrative leaders may not be aware of the value of investing in open science, particularly if the consequences of not doing so are externalized in indirect costs that are not budgeted. A change in mindset may be needed where open science is viewed as a core tool that is critical to maintaining relevance of a research program in the future (Hampton et al. 2017).
+
+Many scientists feel they cannot prioritize learning new skills given existing demands on their time, particularly if the benefits of these approaches, such as the value for the research team of sharing their data, are not apparent or immediate. Short-term funding and even political cycles can disincentivize scientists from spending time on anything but contractually obligated deliverables, which as noted above, may not effectively apply science in decision-making. This is an acute concern for early career scientists that have higher demands on establishing reputation and credentials, where investments in open science may be seen as detracting from progress (Allen and Mehler 2019). As an alternative, a practical solution is to actively encourage the investment in open science within the research team or lab, as opposed to placing the burden on the individual as an isolated researcher (i.e., team science, Cheruvelil and Soranno 2018). Laboratory or department heads should allow and encourage research staff to invest time in learning new skills and exploring new ideas, even if this does not immediately benefit the latest project. Over time, small investments in developing new skills will have long-term payoffs, particularly if a growing skillset among the research team encourages networking and peer instruction (Lowndes et al. 2017; Allen and Mehler 2019). Developing an environment where open science tools are highly valued and encouraged may also increase job satisfaction and benefit recruitment and retention if researchers are allowed the space and time to develop skills beyond the current project.
+
+The scientific culture within a discipline or institution may inhibit the adoption of open science methods. A common argument against open science is the protection of data that an individual research team may view as proprietary or sensitive. There are reasonable arguments to treat data as personal property, particularly if exceptional effort was spent to secure funding for a project and if the data were hard-earned or sensitive, e.g., detailed location data on endangered species or medical/socioeconomic data (Zipper et al. 2019). These issues are less of a concern for bioassessment where many datasets are collected by institutions that are publicly funded and data accessibility may be mandated by law. However, an open science process dictates that both interim and completed research products derived from public data should be available to the broader bioassessment community. This raises an additional concern that research teams using transparent workflows could expose themselves to increased criticism by their peers and the public (Lewandowsky and Bishop 2016; Allen and Mehler 2019), particularly where the developed products can have important regulatory implications.
+
+Feedback and criticism are fundamental and natural parts of the scientific process. Scientists receive feedback at many stages in the conventional scientific workflow (e.g., internal review, peer-review, presentations at conferences). Potentially new and challenging avenues for feedback are created in an open workflow. A concern is that openness can provide a platform for antagonistic or even hostile views, which could alter or degrade the scientific product (Landman and Glantz 2009; Lewandowsky and Bishop 2016). However, opportunities for addressing alternative viewpoints are critical to the open process of creating applied products, even if some voices are politically charged. This is especially true in bioassessment where finished products that could be adopted in regulation are often heavily scrutinized. It is in the interest of applied scientists to hear the concerns of all parties during the development phase. This is not to provide an avenue to erode the integrity or objectives of the science, but to enable full knowledge of the very real barriers to adoption that exist when science is applied in regulation. Openness that invites all voices to participate is a much more agreeable path to consensus than producing the science in isolation of those that it affects (Pohjola and Tuomisto 2011). Ultimately, these products are developed to improve the environment as a public resource and the ideals promoted by an open science process directly align with these goals.
+
+Institutional barriers can inhibit open science given the scale of change that must occur for adoption. Bureaucratic hurdles can disincentivize initiatives that promote change, particularly if that change originates from researchers not in administrative roles. Regulatory institutions may also prefer some level of opacity for how research products that influence policy are made available during development. The level of transparency advocated by open science could be viewed as opening the floodgates to increased legal scrutiny that can unintentionally hinder forward progress. Despite these reservations, many public institutions now advocate for increased openness because of the benefits that facilitate and engender public trust. Open data initiatives are now fairly common and represent a form of advocacy by public institutions for broader adoption of open science principles. Many national-level data products already exist that embrace openness to invest in the quality and availability of data (e.g., National Wata Quality Monitoring Council \href{https://acwi.gov/methods/pubs/over_pubs/valcomp_fs.pdf}{initiatives}, US Geological Survey products through \href{https://waterdata.usgs.gov/nwis}{NWIS} and \href{https://aquatic.biodata.usgs.gov/}{BioData}, US Environmental Protection Agency through \href{https://www.epa.gov/waterdata/water-quality-data-wqx}{STORET/WQX}). Although past efforts and recent changes represent progress, many institutions have yet to strictly define open science and how it is applied internally and externally. As open science continues to build recognition, means of integrating toolsets that promote openness and transparency beyond publicly shared data will have to be adopted by regulatory and management institutions.
+
+\hypertarget{conclusions}{%
+\section{Conclusions}\label{conclusions}}
+
+The relevance of bioassessment applications can be improved with open science by using reproducible, transparent, and effective tools that bridge the gap between research and management. Many open science tools can improve communication between researchers and managers to expose all aspects of the research process and facilitate implementation to support policy, regulation, or monitoring efforts. Communication ensures that the developed product is created through an exchange of ideas to balance the potentially competing needs of different sectors and institutions. The documentation and archiving of data used to create a bioassessment product also ensures that other researchers can discover and build on past efforts, rather than constantly rebuilding the wheel. Incremental improvements of existing products can reduce the proliferation of site- and taxon-specific methods with limited regional applications by exploring new ways to integrate biological indicators across space and time.
+
+\hypertarget{author-contributions}{%
+\section{Author contributions}\label{author-contributions}}
+
+MB and RM performed the research in the case study. All authors contributed to the conceptual development and writing of the manuscript.
+
+\hypertarget{acknowledgments}{%
+\section{Acknowledgments}\label{acknowledgments}}
+
+The authors acknowledge support from the San Gabriel River Regional Monitoring Program and the Sanitation Districts of Los Angeles County. We thank Eric Stein for reviewing an earlier draft of the manuscript. We thank Mike McManus for assistance with the conceptual diagrams.
+
+\hypertarget{figures}{%
+\section{Figures}\label{figures}}
+
+\begin{figure}
+\includegraphics[width=3.15in]{figs/basicflow} \caption{A simplified workflow of the open science paradigm (adapted from @Hampton15).  All aspects of the research process, from the conception of an idea to publishing a product, can be enhanced using open science tools.  The workflow is iterative where products are continually improved through collaborations facilitated through discovery and reproducibility of open data.}\label{fig:basicflow}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=2.55in]{figs/open} \caption{An idealized open approach for bioassessment applications. The green box represents the technical steps of the individual research team for developing the product, the manager and stakeholder box are those that require or motivate the creation of bioassessment products, the gray boxes indicate sources of external information (data and guidance documents) as input into the technical process, and the open text indicates open components of the planning, application, or implementation phase of a bioassessment product. Figures were adapted from @Hampton15. NGO: non-government organization, RMP: regional monitoring program.}\label{fig:open}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=6.97in]{figs/scapex} \caption{Schematic demonstrating how the Stream Classification and Community Explorer (SCAPE) can be used to identify potential management actions for stream sites.  Stream segment classifications are defined as biologically constrained or unconstrained based on landscape characteristics (left map) and sites with bioassessment scores are evaluated relative to the classifications.  Sites can be under-scoring, as expected, or over-scoring relative to the segment classification and expected range of scores (middle plot).  Unconstrained sites are those where present landscape conditions do not limit biological potential and constrained sites are those where landscape conditions limit biological potential (right images).  Management actions and priorities can be defined based on site scores relative to segment classifications.}\label{fig:scapexfig}
+\end{figure}
+
+\hypertarget{tables}{%
+\section{Tables}\label{tables}}
+
+\begin{table}
+
+\caption{\label{tab:osprinc}Core definitions and principles of open science, from Open Knowledge International, http://opendefinition.org/, Creative Commons, https://creativecommons.org/about/program-areas/open-science/, D. Gezelter, http://openscience.org/, and @Powers19}
+\centering
+\begin{tabular}[t]{ll}
+\toprule
+Concepts.and.principles & Description\\
+\midrule
+Open & Anyone can freely access, use, modify, and share for any purpose\\
+Open Science & Practicing science in such a way that others can collaborate and contribute, where research data, lab notes and other research processes are freely available, under terms that enable reuse, redistribution and reproduction of the research and its underlying data and methods\\
+Reproducible & Producing equivalent outcomes from the same data set, or in the case of computational reproducibility, producing equivalent outcomes from the same data set using the same code and software as the original study\\
+Principle 1 & Transparency in experimental methods, observations, and collection of data\\
+Principle 2 & Public availability and reusability of scientific data\\
+\addlinespace
+Principle 3 & Public accessibility and transparency of scientific communication\\
+Principle 4 & The use of web-based tools to facilitate scientific collaboration and reproducibility\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}
+
+\caption{\label{tab:rpkgtab}R packages that can be used in the development and application of bioassessment products.}
+\centering
+\begin{tabular}[t]{lll}
+\toprule
+Task & Package & Description\\
+\midrule
+General & `tidyverse` (Wickham 2017) & A suite of packages to import, wrangle, explore, and plot data.  Includes the popular `ggplot2` and `dplyr` packages.\\
+Mapping, geospatial & `sf` (Pebesma 2018) & A simple features architecture for working with vectorized spatial data, including common geospatial analysis functions\\
+ & `raster` (Hijmans 2019) & Reading, writing, manipulating, analyzing, and modeling gridded spatial data\\
+ & `leaflet` (Cheng et al. 2018) & Integration of R with the popular JavaScript `leaflet` library for interactive maps\\
+ & `mapview` (Appelhans et al. 2018) & Creates interactive maps to quickly examine and visually investigate spatial data, built off `leaflet` and integrated with `sf`\\
+\addlinespace
+Statistical modeling & `randomForest` (Liaw and Wiener 2002) & Create classification and regression trees for predictive modeling\\
+ & `nlme` (Pinheiro et al. 2018) & Non-linear, mixed effects modeling\\
+ & `mgcv` (Wood 2017) & Generalized additive modeling\\
+Community analysis & `TITAN2` (Baker et al. 2015) & Ecological community threshold analysis using indicator species scores\\
+ & `indicspecies` (De Caceres and Legendre 2009) & Indicator species analysis\\
+\addlinespace
+ & `vegan` (Oksanen et al. 2018) & Multivariate analysis for community ecology\\
+Science communication & `shiny` (Chang et al. 2018) & Reactive programming tools to create interactive and customizable web applications\\
+ & `rmarkdown` (Allaire et al. 2018) & Tools for working with markdown markup languages in .Rmd files\\
+ & `knitr` (Xie 2015) & Automated tools for markdown files that process integrated R code chunks\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\hypertarget{references}{%
+\section*{References}\label{references}}
+\addcontentsline{toc}{section}{References}
+
+\hypertarget{refs}{}
+\leavevmode\hypertarget{ref-Allaire18}{}%
+Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, and Winston Chang. 2018. \emph{Rmarkdown: Dynamic Documents for R}. \url{https://CRAN.R-project.org/package=rmarkdown}.
+
+\leavevmode\hypertarget{ref-Allen19}{}%
+Allen, C., and D. M. A. Mehler. 2019. ``Open Science Challenges, Benefits and Tips in Early Career and Beyond.'' \emph{PLoS Biology} 17 (5): e3000246. \url{https://doi.org/10.1371/journal.pbio.3000246}.
+
+\leavevmode\hypertarget{ref-Appelhans18}{}%
+Appelhans, Tim, Florian Detsch, Christoph Reudenbach, and Stefan Woellauer. 2018. \emph{Mapview: Interactive Viewing of Spatial Data in R}. \url{https://github.com/r-spatial/mapview}.
+
+\leavevmode\hypertarget{ref-Baker15}{}%
+Baker, Matthew E., Ryan S. King, and David Kahle. 2015. \emph{TITAN2: Threshold Indicator Taxa Analysis}. \url{https://CRAN.R-project.org/package=TITAN2}.
+
+\leavevmode\hypertarget{ref-Beck18d}{}%
+Beck, M. W. 2018a. ``Constrained streams for biological integrity in California. Knowledge Network for Biocomplexity. urn:uuid:75411f50-32ed-42a5-bbfd-26833c7a441f.''
+
+\leavevmode\hypertarget{ref-Beck18c}{}%
+---------. 2018b. ``SCCWRP/SCAPE: v1.0 (Version 1.0). Zenodo, http://doi.org/10.5281/zenodo.1218121.''
+
+\leavevmode\hypertarget{ref-Beck09}{}%
+Beck, M. W., and L. K. Hatch. 2009. ``A Review of Research on the Development of Lake Indices of Biotic Integrity.'' \emph{Environmental Reviews} 17: 21--44. \url{https://doi.org/10.1139/A09-001}.
+
+\leavevmode\hypertarget{ref-Beck19b}{}%
+Beck, M. W., R. D. Mazor, S. Johnson, K. Wisenbaker, J. Westfall, P. R. Ode, R. Hill, C. Loflen, M. Sutula, and E. D. Stein. 2019. ``Prioritizing Management Goals for Stream Biological Integrity Within the Developed Landscape Context.'' \emph{Freshwater Science} 38 (4).
+
+\leavevmode\hypertarget{ref-Birk12}{}%
+Birk, S., W. Bonne, A. Borja, S. Brucet, A. Courrat, S. Poikane, A. Solimini, W. van de Bund, N. Zampoukas, and D. Hering. 2012. ``Three Hundred Ways to Assess Europe's Surface Waters: An Almost Complete Overview of Biological Methods to Implement the Water Framework Directive.'' \emph{Ecological Indicators} 18 (1): 31--41. \url{https://doi.org/10.1016/j.ecolind.2011.10.009}.
+
+\leavevmode\hypertarget{ref-BondLamberty16}{}%
+Bond-Lamberty, B., A. P. Smith, and V. Bailey. 2016. ``Running an Open Experiment: Transparency and Reproducibility in Soil and Ecosystem Science.'' \emph{Environmental Research Letters} 11 (8): 1--7. \url{https://doi.org/10.1088/1748-9326/11/8/084004}.
+
+\leavevmode\hypertarget{ref-Borja09}{}%
+Borja, A., A. Ranasinghe, and S. B. Weisberg. 2009. ``Assessing Ecological Integrity in Marine Waters, Using Multiple Indices and Ecosystem Components: Challenges for the Future.'' \emph{Marine Pollution Bulletin} 59 (1-3): 1--4.
+
+\leavevmode\hypertarget{ref-Bried14}{}%
+Bried, J. T., S. K. Jog, A. R. Dzialowski, and C. A. Davis. 2014. ``Potential Vegetation Criteria for Identifying Reference-Quality Wetlands in the South-Central United States.'' \emph{Wetlands} 34 (6): 1159--69. \url{https://doi.org/10.1007/s13157-014-0575-5}.
+
+\leavevmode\hypertarget{ref-Cao11}{}%
+Cao, Y., and C. Hawkins. 2011. ``The Comparability of Bioassessments: A Review of Conceptual and Methodological Issues.'' \emph{Journal of the North American Benthological Society} 30 (3): 680--701. \url{https://doi.org/10.1899/10-067.1}.
+
+\leavevmode\hypertarget{ref-Carpenter09}{}%
+Carpenter, S. R., E. V. Armbrust, P. W. Arzberger, F. Stuart Chapin III, J. J. Elser, E. J. Hackett, A. R. Ives, et al. 2009. ``Accelerate Synthesis in Ecology and Environmental Sciences.'' \emph{BioScience} 59 (8): 699--701. \url{https://doi.org/10.1525/bio.2009.59.8.11}.
+
+\leavevmode\hypertarget{ref-Chang18}{}%
+Chang, Winston, Joe Cheng, JJ Allaire, Yihui Xie, and Jonathan McPherson. 2018. \emph{Shiny: Web Application Framework for R}. \url{https://CRAN.R-project.org/package=shiny}.
+
+\leavevmode\hypertarget{ref-Cheng18}{}%
+Cheng, Joe, Bhaskar Karambelkar, and Yihui Xie. 2018. \emph{Leaflet: Create Interactive Web Maps with the Javascript 'Leaflet' Library}. \url{https://CRAN.R-project.org/package=leaflet}.
+
+\leavevmode\hypertarget{ref-Cheruvelil18}{}%
+Cheruvelil, K. S., and P. A. Soranno. 2018. ``Data-Intensive Ecological Research Is Catalyzed by Open Science and Team Science.'' \emph{BioScience} 68 (10): 813--22. \url{https://doi.org/10.1093/biosci/biy097}.
+
+\leavevmode\hypertarget{ref-Chessman07}{}%
+Chessman, B., S. Williams, and C. Besley. 2007. ``Bioassessment of Streams with Macroinvertebrates: Effect of Sampled Habitat and Taxonomic Resolution.'' \emph{Journal of the North American Benthological Society} 26 (3): 546--65. \url{https://doi.org/10.1899/06-074.1}.
+
+\leavevmode\hypertarget{ref-Collins16}{}%
+Collins, S. L. 2016. ``Vegetation Science in the Age of Big Data.'' \emph{Journal of Vegetation Science} 27 (5): 865--67. \url{https://doi.org/10.1111/jvs.12459}.
+
+\leavevmode\hypertarget{ref-Cuffney07}{}%
+Cuffney, T. F., M. D. Bilger, and A. M. Haigler. 2007. ``Ambiguous Taxa: Effects on the Characterization and Interpetation of Invertebrate Assemblages.'' \emph{Journal of the North American Benthological Society} 26 (2): 286--307. \url{https://doi.org/10.1899/0887-3593(2007)26\%5B286:ATEOTC\%5D2.0.CO;2}.
+
+\leavevmode\hypertarget{ref-Dale01}{}%
+Dale, V. H., and S. C. Beyeler. 2001. ``Challenges in the Development and Use of Ecological Indicators.'' \emph{Ecological Indicators} 1 (1): 3--10. \url{https://doi.org/10.1016/S1470-160X(01)00003-6}.
+
+\leavevmode\hypertarget{ref-Darling13}{}%
+Darling, E. S., D. Shiffman, I. M. Côte, and J. A. Drew. 2013. ``The Role of Twitter in the Life Cycle of a Scientific Publication.'' \emph{Ideas in Ecology and Evolution} 6: 32--43. \url{https://doi.org/10.4033/iee.2013.6.6.f}.
+
+\leavevmode\hypertarget{ref-Davies06}{}%
+Davies, S. P., and S. K. Jackson. 2006. ``The Biological Condition Gradient: A Descriptive Model for Interpreting Change in Aquatic Ecosystems.'' \emph{Ecological Applications} 16 (4): 1251--66.
+
+\leavevmode\hypertarget{ref-DeCaceres09}{}%
+De Caceres, Miquel, and Pierre Legendre. 2009. \emph{Associations Between Species and Groups of Sites: Indices and Statistical Inference}. \emph{Ecology}. \url{http://sites.google.com/site/miqueldecaceres/}.
+
+\leavevmode\hypertarget{ref-Fetscher13}{}%
+Fetscher, A. E., R. Stancheva, J. P. Kociolek, R. G. Sheath, E. D. Stein, R. D. Mazor, P. R. Ode, and L. B. Busse. 2013. ``Development and Comparison of Stream Indices of Biotic Integrity Using Diatoms Vs. Non-Diatom Algae Vs. A Combination.'' \emph{Journal of Applied Phycology} 26 (1): 433--50. \url{https://doi.org/10.1007/s10811-013-0088-2}.
+
+\leavevmode\hypertarget{ref-Fore02}{}%
+Fore, L. S., and C. Grafe. 2002. ``Using Diatoms to Assess the Biological Condition of Large Rivers in Idaho (U.S.A.).'' \emph{Freshwater Biology} 47 (10): 2015--37. \url{https://doi.org/10.1046/j.1365-2427.2002.00948.x}.
+
+\leavevmode\hypertarget{ref-Grand12}{}%
+Grand, A., C. Wilkinson, K. Bultitude, and A. F. T. Winfield. 2012. ``Open Science: A New "Trust Technology"?'' \emph{Science Communication} 34 (5): 679--89. \url{https://doi.org/10.1177\%2F1075547012443021}.
+
+\leavevmode\hypertarget{ref-Hampton15}{}%
+Hampton, S. E., S. S. Anderson, S. C. Bagby, C. Gries, X. Han, E. M. Hart, M. B. Jones, et al. 2015. ``The Tao of Open Science for Ecology.'' \emph{Ecosphere} 6 (7): 1--13. \url{https://doi.org/10.1890/ES14-00402.1}.
+
+\leavevmode\hypertarget{ref-Hampton17}{}%
+Hampton, S. E., M. B. Jones, L. A. Wasser, M. P. Schildhauer, S. R. Supp, J. Brun, R. R. Hernandez, et al. 2017. ``Skills and Knowledge for Data-Intensive Environmental Research.'' \emph{Bioscience} 67 (6): 546--57. \url{https://doi.org/10.1093/biosci/bix025}.
+
+\leavevmode\hypertarget{ref-Hampton16}{}%
+Hampton, S. E., C. A. Strasser, J. J. Tewksbury, W. K. Gram, A. E. Budden, A. L. Batcheller, C. S. Duke, and J. H. Porter. 2016. ``Big Data and the Future of Ecology.'' \emph{Frontiers in Ecology and the Environment} 11 (3): 156--62. \url{https://doi.org/10.1890/120103}.
+
+\leavevmode\hypertarget{ref-Hawkins00}{}%
+Hawkins, C. P., R. H. Norris, J. Gerritsen, R. M. Hughes, S. K. Jackson, R. K. Johnson, and R. J. Stevenson. 2000. ``Evaluation of the Use of Landscape Classifications for the Prediction of Freshwater Biota: Synthesis and Recommendations.'' \emph{Journal of the North American Benthological Society} 19 (3): 541--56.
+
+\leavevmode\hypertarget{ref-Hawkins00b}{}%
+Hawkins, C. P., R. H. Norris, J. N. Hogue, and J. W. Feminella. 2000. ``Development and Evaluation of Predictive Models for Measuring the Biological Integrity of Streams.'' \emph{Ecological Applications} 10 (5): 1456--77. \url{https://doi.org/10.1890/1051-0761(2000)010\%5B1456:DAEOPM\%5D2.0.CO;2}.
+
+\leavevmode\hypertarget{ref-Hawkins10}{}%
+Hawkins, C. P., J. R. Olson, and R. A. Hill. 2010. ``The Reference Condition: Predicting Benchmarks for Ecological and Water-Quality Assessments.'' \emph{Journal of the North American Benthological Society} 29 (1): 312--43. \url{https://doi.org/10.1899/09-092.1}.
+
+\leavevmode\hypertarget{ref-Hering10}{}%
+Hering, D., A. Borja, J. Carstensen, L. Carvalho, M. Elliott, C. K. Field, A. S. Heiskanen, et al. 2010. ``The European Water Framework Directive at the Age of 10: A Critical Review of the Achievements with Recommendations for the Future.'' \emph{Science of the Total Environment} 408 (19): 4007--19. \url{https://doi.org/10.1016/j.scitotenv.2010.05.031}.
+
+\leavevmode\hypertarget{ref-Hijmans19}{}%
+Hijmans, Robert J. 2019. \emph{Raster: Geographic Data Analysis and Modeling}. \url{https://CRAN.R-project.org/package=raster}.
+
+\leavevmode\hypertarget{ref-Hill16}{}%
+Hill, R. A., M. H. Weber, S. G. Leibowitz, A. R. Olsen, and D. J. Thornbrugh. 2016. ``The Stream-Catchment (StreamCat) Dataset: A Database of Watershed Metrics for the Conterminous United States.'' \emph{Journal of the American Water Resources Association} 52: 120--28. \url{https://doi.org/10.1111/1752-1688.12372}.
+
+\leavevmode\hypertarget{ref-Horsburgh16}{}%
+Horsburgh, J. S., M. M. Morsy, A. M. Castronova, J. L. Goodall, T. Gan, H. Yi, M. J. Stealey, and D. G. Tarboton. 2016. ``Hydroshare: Sharing Diverse Environmental Data Types and Models as Social Objects with Application to the Hydrology Domain.'' \emph{Journal of the American Water Resources Association} 52 (4): 873--89. \url{https://doi.org/10.1111/1752-1688.12363}.
+
+\leavevmode\hypertarget{ref-Hsu17}{}%
+Hsu, L., E. Mayorga, J. S. Horsburgh, M. R. Carter, K. A. Lehnert, and s. L. Brantley. 2017. ``Enhancing Interoperability and Capabilities of Earth Science Data Using the Observations Data Model 2 (ODM2).'' \emph{Data Science Journal} 16 (4): 1--16. \url{https://doi.org/10.5334/dsj-2017-004}.
+
+\leavevmode\hypertarget{ref-Idaszak17}{}%
+Idaszak, R., D. G. Tarboton, H. Yi, L. Chistopherson, M. J. Stealey, B. Miles, P. Dash, et al. 2017. ``HydroShare - a Case Study of the Application of Modern Software Engineering to a Large Distributed Federally-Funded Scientific Software Development Project.'' In \emph{Chapter 10 in Software Engineering for Science}, edited by J. Carver, N. P. C. Hong, and G. K. Thiruvathukal, 217--33. Boca Raton, Florida, USA: Taylor \& Francis CRC Press.
+
+\leavevmode\hypertarget{ref-Ihle17}{}%
+Ihle, M., I. S. Winney, A. Krystalli, and M. Croucher. 2017. ``Striving for Transparent and Credible Research: Practical Guidelines for Behavioral Ecologists.'' \emph{Behavioral Ecology} 28 (2): 348--54. \url{https://doi.org/10.1093/beheco/arx003}.
+
+\leavevmode\hypertarget{ref-Karr86}{}%
+Karr, J. R., K. D. Fausch, P. L. Angermeier, P. R. Yant, and I. J. Schlosser. 1986. ``Assessing Biological Integrity in Running Waters: A Method and Its Rationale.'' Special Publication 5. Champaign, Illinois: Illinois Natural History Survey.
+
+\leavevmode\hypertarget{ref-Kelly16}{}%
+Kelly, M. G., S. Birk, N. J. Willby, L. Denys, S.Drakare, M. Kahlert, S. M. Karjalainen, et al. 2016. ``Redundancy in the Ecological Assessment of Lakes: Are Phytoplankton, Macrophytes and Phytobenthos All Necessary?'' \emph{Science of the Total Environment} 15 (568): 594--602. \url{https://doi.org/10.1016/j.scitotenv.2016.02.024}.
+
+\leavevmode\hypertarget{ref-Kerans94}{}%
+Kerans, B. L., and J. R. Karr. 1994. ``A Benthic Index of Biotic Integrity (B-IBI) for Rivers of the Tennessee Valley.'' \emph{Ecological Applications} 4 (4): 768--85. \url{https://doi.org/10.2307/1942007}.
+
+\leavevmode\hypertarget{ref-King11}{}%
+King, R. S., M. E. Baker, P. F. Kazyak, and D. E. Weller. 2011. ``How Novel Is Too Novel? Stream Community Thresholds at Exceptionally Low Levels of Catchment Urbanization.'' \emph{Ecological Applications} 21 (5): 1659--78. \url{https://doi.org/10.1890/10-1357.1}.
+
+\leavevmode\hypertarget{ref-Kluyver16}{}%
+Kluyver, T., B. Ragan-Kelley, F. Pérez, B. Granger, M. Bussonnier, J. Frederic, K. Kelley, et al. 2016. ``Jupyter Notebooks -- a Publishing Format for Reproducible Computational Workflows.'' Edited by F. Loizides and B. Schmidt. IOS Press.
+
+\leavevmode\hypertarget{ref-Kuehne19}{}%
+Kuehne, L. M., and A. L. Strecker, and J. D. Olden. 2019. ``Knowledge Exchange and Social Capital for Freshwater Ecosystem Assessments.'' \emph{BioScience} 70 (2): 174--83. \url{https://doi.org/10.1093/biosci/biz142}.
+
+\leavevmode\hypertarget{ref-Kuehne17}{}%
+Kuehne, L. M., J. D. Olden, A. L. Strecker, J. J. Lawler, and D. M. Theobald. 2017. ``Past, Present, and Future of Ecological Integrity Assessment for Fresh Waters.'' \emph{Frontiers in Ecology and the Environment} 15 (4): 197--205. \url{https://doi.org/10.1002/fee.1483}.
+
+\leavevmode\hypertarget{ref-VanderLaan14}{}%
+Laan, J. J. Vander, and C. P. Hawkins. 2014. ``Enhancing the Performance and Interpretation of Freshwater Biological Indices: An Application in Arid Zone Streams.'' \emph{Ecological Indicators} 36: 470--82. \url{https://doi.org/10.1016/j.ecolind.2013.09.006}.
+
+\leavevmode\hypertarget{ref-Lai19}{}%
+Lai, J., C. J. Lortie, R. A. Muenchen, J. Yang, and K. Ma. 2019. ``Evaluating the Popularity of R in Ecology.'' \emph{Ecosphere} 10 (1): e02567. \url{https://doi.org/10.1002/ecs2.2567}.
+
+\leavevmode\hypertarget{ref-Landman09}{}%
+Landman, A., and S. A. Glantz. 2009. ``Tobacco Industry Efforts to Undermine Policy-Relevant Research.'' \emph{American Journal of Public Health} 99 (1): 45--58. \url{https://doi.org/10.2105\%2FAJPH.2007.130740}.
+
+\leavevmode\hypertarget{ref-Lenat01}{}%
+Lenat, D. R., and V. H. Resh. 2001. ``Taxonomy and Stream Ecology - the Benefits of Genus- and Species-Level Identifications.'' \emph{Journal of the North American Benthological Society} 20 (2): 287--98. \url{https://doi.org/10.2307/1468323}.
+
+\leavevmode\hypertarget{ref-Lewandowsky16}{}%
+Lewandowsky, S., and D. Bishop. 2016. ``Research Integrity: Don't Let Transparency Damage Science.'' \emph{Nature} 529 (7587): 459--61. \url{https://doi.org/10.1038/529459a}.
+
+\leavevmode\hypertarget{ref-Liaw02}{}%
+Liaw, Andy, and Matthew Wiener. 2002. ``Classification and Regression by randomForest.'' \emph{R News} 2 (3): 18--22. \url{http://CRAN.R-project.org/doc/Rnews/}.
+
+\leavevmode\hypertarget{ref-Liu08}{}%
+Liu, Y., H. Gupta, E. Springer, and T. Wagener. 2008. ``Linking Science with Environmental Decision Making: Experiences from an Integrated Modeling Approach to Supporting Sustainable Water Resources Management.'' \emph{Environmental Modelling \& Software} 23 (7): 846--58. \url{https://doi.org/10.1016/j.envsoft.2007.10.007}.
+
+\leavevmode\hypertarget{ref-Lortie14}{}%
+Lortie, C. J. 2014. ``Formalized Synthesis Opportunities for Ecology: Systematic Reviews and Meta-Analyses.'' \emph{OIKOS} 123 (8): 897--902. \url{https://doi.org/10.1111/j.1600-0706.2013.00970.x}.
+
+\leavevmode\hypertarget{ref-Lowndes17}{}%
+Lowndes, J. S. S., B. D. Best, C. Scarborough, J. C. Afflerbach, M. R. Frazier, C. C. O'Hara, N. Jiang, and B. S. Halpern. 2017. ``Our Path to Better Science in Less Time Using Open Data Science Tools.'' \emph{Nature Ecology \& Evolution} 1 (0160): 1--7. \url{https://doi.org/10.1038/s41559-017-0160}.
+
+\leavevmode\hypertarget{ref-Marwick16}{}%
+Marwick, Ben, Jade d'Alpoim Guedes, C. Michael Barton, Lynsey A. Bates, Michael Baxter, Andrew Bevan, Elizabeth A. Bollwerk, et al. 2016. ``Open Science in Archaeology.'' \emph{SAA Archaeological Record} 17 (4): 8--14. \url{https://doi.org/10.17605/OSF.IO/3D6XX}.
+
+\leavevmode\hypertarget{ref-Mazor16}{}%
+Mazor, R. D., A. C. Rehn, P. R. Ode, M. Engeln, K. C. Schiff, E. D. Stein, D. J. Gillett, D. B. Herbst, and C. P. Hawkins. 2016. ``Bioassessment in Complex Environments: Designing an Index for Consistent Meaning in Different Settings.'' \emph{Freshwater Science} 35 (1): 249--71.
+
+\leavevmode\hypertarget{ref-Mazor14}{}%
+Mazor, R. D., E. D. Stein, P. R. Ode, and K. Schiff. 2014. ``Integrating Intermittent Streams into Watershed Assessments: Applicability of an Index of Biotic Integrity.'' \emph{Freshwater Science} 35 (2): 459--74. \url{https://doi.org/10.1086/675683}.
+
+\leavevmode\hypertarget{ref-McKay12}{}%
+McKay, L., T. Bondelid, T. Dewald, J. Johnston, R. Moore, and A. Reah. 2012. ``NHDPlus Version 2: User Guide.''
+
+\leavevmode\hypertarget{ref-Michener97}{}%
+Michener, W. K., J. W. Brunt, J. J. Helly, T. B. Kirchner, and S. G. Stafford. 1997. ``Nongeospatial Metadata for the Ecological Sciences.'' \emph{Ecological Applications} 7 (1): 330--42.
+
+\leavevmode\hypertarget{ref-Mitchell05}{}%
+Mitchell, B. 2005. ``Integrated Water Resource Management, Institutional Arrangements, and Land Use Planning.'' \emph{Environmental Planning A: Economy and Space} 37: 1335--52. \url{https://doi.org/10.1068/a37224}.
+
+\leavevmode\hypertarget{ref-Nichols16}{}%
+Nichols, S. J., L. A. Barmuta, B. C. Chessman, P. E. Davies, F. J. Dyer, E. T. Harrison, C. P. Hawkins, et al. 2016. ``The Imperative Need for Nationally Coordinated Bioassessment of Rivers and Streams.'' \emph{Marine and Freshwater Research} 68 (4): 599--613. \url{https://doi.org/10.1071/MF15329}.
+
+\leavevmode\hypertarget{ref-Ode16}{}%
+Ode, P. R., A. C. Rehn, R. D. Mazor, K. C. Schiff, E. D. Stein, J. T. May, L. R. Brown, et al. 2016. ``Evaluating the Adequacy of a Reference-Site Pool for Ecological Assessments in Environmentally Complex Regions.'' \emph{Freshwater Science} 35 (1): 237--48.
+
+\leavevmode\hypertarget{ref-Oksanen18}{}%
+Oksanen, Jari, F. Guillaume Blanchet, Michael Friendly, Roeland Kindt, Pierre Legendre, Dan McGlinn, Peter R. Minchin, et al. 2018. \emph{Vegan: Community Ecology Package}. \url{https://CRAN.R-project.org/package=vegan}.
+
+\leavevmode\hypertarget{ref-Pebesma18}{}%
+Pebesma, Edzer. 2018. \emph{Sf: Simple Features for R}. \url{https://CRAN.R-project.org/package=sf}.
+
+\leavevmode\hypertarget{ref-Pilkington16}{}%
+Pilkington, M. 2016. ``Blockchain Technology: Principles and Applications.'' In \emph{Research Handbook on Digital Transformations}, edited by F. X. Olleros and M. Zhegu, 225--53. Cheltenham, United Kingdom: Edward Elgar Publishing.
+
+\leavevmode\hypertarget{ref-Pinheiro18}{}%
+Pinheiro, Jose, Douglas Bates, Saikat DebRoy, Deepayan Sarkar, and R Core Team. 2018. \emph{nlme: Linear and Nonlinear Mixed Effects Models}. \url{https://CRAN.R-project.org/package=nlme}.
+
+\leavevmode\hypertarget{ref-Pohjola11}{}%
+Pohjola, M. V., and J. T. Tuomisto. 2011. ``Openness in Participation, Assessment, and Policy Making Upon Issues of Environment and Environmental Health: A Review of Literature and Recent Project Results.'' \emph{Environmental Health} 10 (58): 1--13. \url{https://doi.org/10.1186/1476-069X-10-58}.
+
+\leavevmode\hypertarget{ref-Poikane14}{}%
+Poikane, S., N. Zampoukas, A. Borja, S. P. Davies, W. van de Bund, and S. Birk. 2014. ``Intercalibration of Aquatic Ecological Assessment Methods in the European Union.'' \emph{Environmental Science \& Policy} 44: 237--46. \url{https://doi.org/10.1016/j.envsci.2014.08.006}.
+
+\leavevmode\hypertarget{ref-RDCT18}{}%
+RDCT (R Development Core Team). 2018. ``R: A language and environment for statistical computing, v3.5.1. R Foundation for Statistical Computing, Vienna, Austria.''
+
+\leavevmode\hypertarget{ref-Rehn18}{}%
+Rehn, A. C., R. D. Mazor, and P. R. Ode. 2018. ``An Index to Measure the Quality of Physical Habitat in California Wadeable Streams.'' SWAMP Technical Memorandum, SWAMP-TM-2018-0005. Sacramento, California: California Water Boards, Surface Water Ambient Monitoring Program, California Department of Fish; Wildlife, Southern California Coastal Water Research Project. \url{https://www.waterboards.ca.gov/water_issues/programs/swamp/bioassessment/docs/physical_habitat_index_technical_memo.pdf}.
+
+\leavevmode\hypertarget{ref-Slater19}{}%
+Slater, L. J., G. Thirel, s. Harrigan, O. Delaigue, A. Hurley, A. Khouakhi, I. Prosdocimi, C. Vitolo, and K. smith. 2019. ``Using R in Hydrology: A Review of Recent Developments and Future Directions.'' \emph{Hydrology and Earth System Sciences} 23: 2939--63. \url{https://doi.org/10.5194/hess-23-2939-2019}.
+
+\leavevmode\hypertarget{ref-Stein09}{}%
+Stein, E. D., M. Brinson, M. C. Rains, W. Kleindl, and F. R. Hauer. 2009. ``Wetland Assessment Alphabet Soup: How to Choose (or Not Choose) the Right Assessment Method.'' \emph{Society of Wetland Scientists Bulletin} 26: 20--24.
+
+\leavevmode\hypertarget{ref-Stoddard06}{}%
+Stoddard, J. L., D. P. Larsen, C. P. Hawkins, R. K. Johnson, and R. H. Norris. 2006. ``Setting Expectations for the Ecological Condition of Streams: The Concept of Reference Condition.'' \emph{Ecological Applications} 16 (4): 1267--76. \url{https://doi.org/10.1890/1051-0761(2006)016\%5B1267:SEFTEC\%5D2.0.CO;2}.
+
+\leavevmode\hypertarget{ref-Taylor18}{}%
+Taylor, J. M., J. A. Back, B. W. Brooks, and R. S. King. 2018. ``Spatial, Temporal and Experimental: Three Study Design Cornerstones for Establishing Defensible Numeric Criteria in Freshwater Ecosystems.'' \emph{Journal of Applied Ecology} 55 (5): 2114--23. \url{https://doi.org/10.1111/1365-2664.13150}.
+
+\leavevmode\hypertarget{ref-Taylor14}{}%
+Taylor, J. M., R. S. King, A. A. Pease, and K. O. Winemiller. 2014. ``Nonlinear Response of Stream Ecosystem Structure to Low-Level Phosphorus Enrichment.'' \emph{Freshwater Biology} 59: 969--84. \url{https://doi.org/10.1111/fwb.12320}.
+
+\leavevmode\hypertarget{ref-Touchon16}{}%
+Touchon, J. C., and M. W. McCoy. 2016. ``The Mismatch Between Current Statistical Practice and Doctoral Training in Ecology.'' \emph{Ecosphere} 7 (8): e01394. \url{https://doi.org/10.1002/ecs2.1394}.
+
+\leavevmode\hypertarget{ref-Wickham14c}{}%
+Wickham, H. 2014. ``Tidy Data.'' \emph{Journal of Statistical Software} 59 (10): 1--23. \url{https://doi.org/10.18637/jss.v059.i10}.
+
+\leavevmode\hypertarget{ref-Wickham15}{}%
+---------. 2015. \emph{R Packages}. Sebastopol, California: O'Reilly.
+
+\leavevmode\hypertarget{ref-Wickham09}{}%
+Wickham, Hadley. 2009. \emph{Ggplot2: Elegant Graphics for Data Analysis}. Springer-Verlag. New York. \url{http://had.co.nz/ggplot2/book}.
+
+\leavevmode\hypertarget{ref-Wickham17b}{}%
+---------. 2017. \emph{Tidyverse: Easily Install and Load the 'Tidyverse'}. \url{https://CRAN.R-project.org/package=tidyverse}.
+
+\leavevmode\hypertarget{ref-Wickham18}{}%
+Wickham, Hadley, Jim Hester, and Winston Chang. 2018. \emph{Devtools: Tools to Make Developing R Packages Easier}. \url{https://CRAN.R-project.org/package=devtools}.
+
+\leavevmode\hypertarget{ref-Wilkinson05}{}%
+Wilkinson, L. 2005. \emph{The Grammar of Graphics}. Second. New York: Statistics; Computing, Springer.
+
+\leavevmode\hypertarget{ref-Woelfle11}{}%
+Woelfle, M., P. Olliaro, and M. H. Todd. 2011. ``Open Science Is a Research Accelerator.'' \emph{Nature Chemistry} 3 (10): 745--48. \url{https://doi.org/10.1038/nchem.1149}.
+
+\leavevmode\hypertarget{ref-Wood17}{}%
+Wood, S. N. 2017. \emph{Generalized Additive Models: An Introduction with R}. 2nd ed. London, United Kingdom: Chapman; Hall, CRC Press.
+
+\leavevmode\hypertarget{ref-Xie15}{}%
+Xie, Yihui. 2015. \emph{Dynamic Documents with R and Knitr}. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. \url{https://yihui.name/knitr/}.
+
+\leavevmode\hypertarget{ref-Yenni19}{}%
+Yenni, G. M., E. M. Christensen, E. K. Bledsoe, S. R. Supp, R. M. Diaz, E. P. White, and s. K. M. Ernest. 2019. ``Developing a Modern Data Workflow for Regularly Updated Data.'' \emph{PLoS Biology} 17 (1): e3000125. \url{https://doi.org/10.1371/journal.pbio.3000125}.
+
+\leavevmode\hypertarget{ref-Yuan04}{}%
+Yuan, L. L. 2004. ``Assigning Macroinvertebrate Tolerance Classifications Using Generalised Additive Models.'' \emph{Freshwater Biology} 49 (5): 662--77. \url{https://doi.org/10.1111/j.1365-2427.2004.01206.x}.
+
+\leavevmode\hypertarget{ref-Zipper19}{}%
+Zipper, S. C., K. S Stack Whitney, J. M. Deines, K. M. Befus, U. Bhatia, S. J. Albers, J. Beecher, et al. 2019. ``Balancing Open Science and Data Privacy in the Water Sciences.'' \emph{Water Resources Research} 55: 1--10. \url{https://doi.org/10.1029/2019WR025080}.
+
+
+
+\end{document}
